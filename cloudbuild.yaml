@@ -56,5 +56,5 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
-  args: ['run', 'deploy', 'gateway', '--image', 'gcr.io/safeblues/safeblues-frontend:latest', '--region', 'australia-southeast1', '--platform', 'managed']
+  args: ['run', 'deploy', 'frontend-prod', '--image', 'gcr.io/safeblues/safeblues-frontend:latest', '--region', 'australia-southeast1', '--platform', 'managed']
 timeout: 1200s
