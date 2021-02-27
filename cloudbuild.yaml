@@ -1,8 +1,8 @@
-# Access the safeblues-frontend-deploy-key file from Secret Manager
+# Access the deploy-key file from Secret Manager
 steps:
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
-  args: [ '-c', 'gcloud secrets versions access latest --secret=safeblues-frontend-deploy-key > /root/.ssh/safeblues-frontend-deploy-key' ]
+  args: [ '-c', 'gcloud secrets versions access latest --secret=deploy-key > /root/.ssh/deploy-key' ]
   volumes:
   - name: 'ssh'
     path: /root/.ssh
@@ -12,10 +12,10 @@ steps:
   args:
   - '-c'
   - |
-    chmod 600 /root/.ssh/safeblues-frontend-deploy-key
+    chmod 600 /root/.ssh/deploy-key
     cat <<EOF >/root/.ssh/config
     Hostname github.com
-    IdentityFile /root/.ssh/safeblues-frontend-deploy-key
+    IdentityFile /root/.ssh/deploy-key
     EOF
     ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
   volumes:
@@ -39,22 +39,22 @@ steps:
 #   args: ['run', 'test']
 # Build docker image from cache for better performance
 # - name: 'gcr.io/cloud-builders/docker'
-#   args: ['pull', 'gcr.io/safeblues-frontend:latest']
+#   args: ['pull', 'gcr.io/safeblues/safeblues-frontend:latest']
 - name: 'gcr.io/cloud-builders/docker'
   args: [
     'build',
     '--build-arg',
     'NODE_ENV=development',
     '-t',
-    'gcr.io/safeblues-frontend:latest',
-    # '--cache-from', 'gcr.io/safeblues-frontend:latest',
+    'gcr.io/safeblues/safeblues-frontend:latest',
+    # '--cache-from', 'gcr.io/safeblues/safeblues-frontend:latest',
     '.'
   ]
 # # Push docker image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/safeblues-frontend:latest']
+  args: ['push', 'gcr.io/safeblues/safeblues-frontend:latest']
 # # Deploy container image to Cloud Run
 # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
 #   entrypoint: 'gcloud'
-#   args: ['run', 'deploy', 'gateway', '--image', 'gcr.io/safeblues-frontend:latest', '--region', 'australia-southeast1', '--platform', 'managed']
+#   args: ['run', 'deploy', 'gateway', '--image', 'gcr.io/safeblues/safeblues-frontend:latest', '--region', 'australia-southeast1', '--platform', 'managed']
 # timeout: 1200s
