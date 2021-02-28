@@ -10,8 +10,7 @@ RUN npm install
 
 # add app/or mount volume
 COPY ./react-app ./
-# set default port
-ENV PORT=$PORT
-EXPOSE 8080
+# default react port to expose
+EXPOSE 3000
 # start app
 CMD ["npm", "run", "start"]
