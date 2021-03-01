@@ -5,12 +5,12 @@ FROM node:alpine
 WORKDIR /app
 
 # install app dependencies
-COPY ./react-app/package*.json ./
+COPY ./vue-app/package*.json ./
 RUN npm install
 
-# add app/or mount volume
-COPY ./react-app ./
+# add app/or mount volume - an optional line(volume mount), but indicates whats happening.
+COPY ./vue-app ./ 
 # default react port to expose
-EXPOSE 3000
+EXPOSE 8080
 # start app
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "serve"]
