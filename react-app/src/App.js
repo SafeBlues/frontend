@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import yourComponent from "./components/yourComponent";
+import YourComponent2 from "./components/yourComponent2";
+import SignIn from "./components/SignIn";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          change text woooo push to main, no tag push 
-          this is another change
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <header className="App-header">test</header> */}
+      <BrowserRouter>
+        <Switch>
+          <Route path={"/some-path"} component={yourComponent} exact={false} />
+          <Route
+            path={"/some-other-path"}
+            // the components must have capitals
+            render={() => <YourComponent2 someValue="something passed in" />}
+            exact={false}
+          />
+          <Route
+            path={"/signin"}
+            render={() => <SignIn signedIn={false} />} // TODO pass in the signin state
+            exact={false} // ie there are no sub routes
+          />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

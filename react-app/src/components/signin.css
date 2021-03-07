@@ -1,0 +1,14 @@
+.signinContainer
+{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer
+{
+    display: flex;
+    flex-flow: column nowrap;
+    width:400px;
+}
