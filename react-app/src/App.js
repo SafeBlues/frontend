@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import yourComponent from "./components/yourComponent";
 import YourComponent2 from "./components/yourComponent2";
 import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
@@ -21,6 +22,11 @@ function App() {
           <Route
             path={"/signin"}
             render={() => <SignIn signedIn={false} />} // TODO pass in the signin state
+            exact={false} // ie there are no sub routes
+          />
+          <Route
+            path={"/signup"}
+            render={() => <SignUp signedIn={false} />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
         </Switch>

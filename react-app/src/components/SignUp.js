@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import "./signin.css";
+import "./signin.css"; // TODO update to its own CSS
 const BASE_URL = "http://localhost:8000";
-class SignIn extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
@@ -19,32 +19,12 @@ class SignIn extends React.Component {
     this.setState({ password: event.target.value });
   }
 
-  async sampleFunc(event) {
-    event.preventDefault();
-    const res = await axios.get(`${BASE_URL}/v1/logged_in_test`, {
-      withCredentials: true,
-    });
-    console.log(res);
-  }
-  testAdmin(event) {
-    event.preventDefault();
-    console.log("testing admin");
-    const res = axios
-      .get(`${BASE_URL}/v1/participants`, { withCredentials: true })
-      .then((res) => {
-        alert("Login success!");
-      })
-      .catch((error) => {
-        console.log(error.response.status);
-        if (error.response.status === 401) {
-          alert("Wrong credentials.");
-        } else {
-          throw error;
-        }
-      });
-  }
-
   async handleSubmit(event) {
+    // check password long enough/strong
+    // check passwords match
+    // make post request to make new user
+    // display instructions on downloading the app
+    // add 'send me updates' button and add that field to db
     event.preventDefault();
     console.log({ password: this.state.password, email: this.state.email });
     const res = await axios.post(
@@ -66,12 +46,13 @@ class SignIn extends React.Component {
     if (this.props.signedIn == false) {
       return (
         <div className="signinContainer">
-          <h1>Sign in:</h1>
+          <h1>Sign Up For Safe Blues:</h1>
           <form className="formContainer" onSubmit={this.handleSubmit}>
             <label>
               Email:
               <input type="text" onChange={this.updateEmail} name="name" />
             </label>
+
             <label>
               Password:
               <input
@@ -81,11 +62,20 @@ class SignIn extends React.Component {
                 name="name"
               />
             </label>
-          <label>
-            Show Password
-            <input type="checkbox" onClick={this.showPassword} />
-          </label>
-            <input type="submit" value="Sign in" />
+            <label>
+              Password Confirmation:
+              <input
+                type="password"
+                id="password_input"
+                onChange={this.updatePassword}
+                name="name"
+              />
+            </label>
+            <label>
+              Show Password
+              <input type="checkbox" onClick={this.showPassword} />
+            </label>
+              <input type="submit" value="Create user" />
           </form>
 
           <input type="button" value="test login" onClick={this.sampleFunc} />
@@ -97,4 +87,4 @@ class SignIn extends React.Component {
     }
   }
 }
-export default SignIn;
+export default SignUp;
