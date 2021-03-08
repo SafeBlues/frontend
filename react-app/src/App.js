@@ -5,12 +5,20 @@ import yourComponent from "./components/yourComponent";
 import YourComponent2 from "./components/yourComponent2";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">test</header> */}
+      {/* <header className="App-header"></header> */}
+      <Header/>
       <BrowserRouter>
+          <Route
+              // require the word exact to prevent the partial matching of everything
+              exact path={"/"}
+              render={() => <Home/>} 
+            />
         <Switch>
           <Route path={"/some-path"} component={yourComponent} exact={false} />
           <Route
