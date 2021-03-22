@@ -5,18 +5,15 @@ const BASE_URL = "http://localhost:8000";
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-    this.updateFirstName = this.updateFirstName.bind(this);
-    this.updateLastName = this.updateLastName.bind(this);
-    this.updateEmail = this.updateEmail.bind(this);
-    this.updatePassword = this.updatePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { firstName: "first name here" };
+    this.setter = this.setter.bind(this)
   }
 
-  updateFirstName(event) {
-    this.setState({ firstName: event.target.value });
-  }
-  updateLastName(event) {
+  // updateFirstName(event) {
+  //   this.setState({ firstName: event.target.value });
+  // }
+  // 
+  updateLastName(event) { 
     this.setState({ lastName: event.target.value });
   }
   updateEmail(event) {
@@ -24,6 +21,9 @@ class SignUp extends React.Component {
   }
   updatePassword(event) {
     this.setState({ password: event.target.value });
+  }
+  setter(event, key) {
+    this.setState({[key]: event.target.value})
   }
 
   async handleSubmit(event) {
@@ -51,22 +51,25 @@ class SignUp extends React.Component {
     }
   }
   render() {
-    if (this.props.signedIn == false) {
+    const {firstName, lastName, email} = this.state // do this all the time
+    const {setter} = this // generally don't bother doing this
+    if (this.props.signedIn === false) {
       return (
         <div className="signinContainer">
           <h1>Sign Up For Safe Blues:</h1>
           <form className="formContainer" onSubmit={this.handleSubmit}>
           <label>
               First Name:
-              <input type="text" onChange={this.updateFirstName} name="first name" />
+              {/* <input type="text" onChange={this.updateFirstName} name="first name" /> */}
+              <input type="text" value={firstName}  onChange={(event)=> setter(event, "firstName")} name="first name" />
             </label>
             <label>
               last Name:
-              <input type="text" onChange={this.updateLastName} name="last name" />
+              <input type="text" value={lastName} onChange={(event)=> setter(event, "lastName")} name="last name" />
             </label>
             <label>
               Email:
-              <input type="text" onChange={this.updateEmail} name="email" />
+              <input type="text" value={email} onChange={(event)=> setter(event, "email")} name="email" />
             </label>
 
             <label>

@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
+import Join from "./components/Join/Join";
 
 function App() {
   return (
@@ -35,6 +36,11 @@ function App() {
           <Route
             path={"/signup"}
             render={() => <SignUp signedIn={false} />} // TODO pass in the signin state
+            exact={false} // ie there are no sub routes
+          />
+          <Route
+            path={"/join"}
+            render={() => <Join />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
         </Switch>

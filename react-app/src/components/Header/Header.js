@@ -35,6 +35,9 @@ export default function Header() {
           <Button color="inherit" href="/dashboard">
             Dashboard
           </Button>
+          <Button color="inherit" href="/join">
+            Join
+          </Button>
     </div>
   );
 }
