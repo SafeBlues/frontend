@@ -1,16 +1,7 @@
-# pull official base image
+# BUILD PHASE
 FROM node:alpine
-
-# set working directory
 WORKDIR /app
-
-# install app dependencies
-COPY ./vue-app/package*.json ./
+COPY ./react-app/package*.json ./
 RUN npm install
-
-# add app/or mount volume - an optional line(volume mount), but indicates whats happening.
-COPY ./vue-app ./ 
-# default react port to expose
-EXPOSE 8080
-# start app
-CMD ["npm", "run", "serve"]
+COPY ./react-app ./
+CMD npm run start
