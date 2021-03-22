@@ -11,6 +11,8 @@
       <v-btn @click="$router.push('/about')" text> About </v-btn>
       <v-btn @click="$router.push('/dashboard')" text> Dashboard </v-btn>
       <v-btn @click="$router.push('/admin')" text> Admin </v-btn>
+      <v-btn @click="$router.push('/login')" text> Login </v-btn>
+      
     </v-toolbar-items>
   </v-toolbar>
 </template>

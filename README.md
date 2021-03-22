@@ -2,6 +2,9 @@
 ## local testing and development
 
 ```docker-compose build frontend-dev && docker-compose run frontend-dev```
+note you need to have run `npm i` in the frontend repo first.
+
+otherwise you can just test with `npm run serve`
 
 ## testing prod build
 
