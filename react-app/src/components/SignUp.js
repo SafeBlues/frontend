@@ -85,7 +85,7 @@ class SignUp extends React.Component {
               Password Confirmation:
               <input
                 type="password"
-                id="password_input"
+                id="password_confirmation"
                 onChange={this.updatePassword}
                 name="name"
               />
