@@ -1,9 +1,11 @@
 import React from "react";
 import axios from "axios";
 import "./Join.css";
-import googleplay from "./googleplay.png"
-const BASE_URL = "http://localhost:8000"; // TODO pass in the base url as prop
+import { Button, TextField } from "@material-ui/core";
 
+import googleplay from "./googleplay.png";
+const BFF_URL = "http://localhost:8000"; // TODO pass in the base url as prop
+const safebluesurl = "http://safeblues.org";
 class Join extends React.Component {
   constructor(props) {
     super(props);
@@ -19,12 +21,11 @@ class Join extends React.Component {
     this.setState({ [key]: value });
   }
   async handleSubmit(event) {
-    event.preventDefault();
     if (this.state.consented === true) {
       console.log("submitting...");
       const res = await axios
         .post(
-          `${BASE_URL}/v2/participants`,
+          `${BFF_URL}/v2/participants`,
           {
             email: this.state.email,
             participant_id: this.state.participant_id,
@@ -51,14 +52,17 @@ class Join extends React.Component {
     return (
       <div className={"joinContainer"}>
         <h1>Joining The Safe Blues 2021 Experiment</h1>
-        <form className="formContainer" onSubmit={this.handleSubmit}>
+        <form className="formContainer">
           <p>
             Thank you for your interest in joining the Safe Blues campus
             experiment. If you are over 16, plan to attend the University of
             Auckland city campus during parts of 2021, and have an Android
             mobile device you are welcomed to join. You are advised to first
-            read the online participant information sheet.
-            {/* TODO  add the link and recreate the information sheet*/}
+            read the online{" "}
+            <a href={safebluesurl + "/participant-information-sheet/"}>
+              participant information sheet
+            </a>
+            .{/* TODO  add the link and recreate the information sheet*/}
           </p>
           <h2>Follow these 5 steps to join:</h2>
           <ol>
@@ -66,38 +70,71 @@ class Join extends React.Component {
               Download the Safe Blues App to your Android phone:
               <br />
               <center>
-                <a href="https://play.google.com/store/apps/details?id=org.safeblues.mobile">
-                  <img
-                    src={googleplay}
-                    alt="Google Play"
-                    style={{width: '150px'}}
-                  ></img>
-                </a>
+                <div class="img-container">
+                  <a href="https://play.google.com/store/apps/details?id=org.safeblues.mobile">
+                    <img
+                      src={googleplay}
+                      alt="Google Play"
+                      style={{ width: "150px" }}
+                    ></img>
+                  </a>
+                </div>
               </center>
-              <br />
-              The app provides you with your unique private 10 digit{" "}
-              <b>participant id</b> which you can write down or see whenever you
-              launch the app.
+              <p>
+                The app provides you with your unique private 10 digit{" "}
+                <b>participant id</b> which you can write down or see whenever
+                you launch the app.
+              </p>
             </li>
             <li>
-              Enter your Participant ID to link it to your email address. <br />
-              <input
-                type="text"
-                name="participant_id"
-                value={participant_id}
+              <p>Enter your Participant ID to link it to your email address.</p>
+              {/* TODO add validation to the user input, eg add 'error' to the
+               TextField class when the input is invalid, or come back from the 
+              backend as invalid. */}
+              <TextField
+                id="outlined-basic"
+                label="Participant ID"
+                variant="outlined"
+                fullWidth
+                Dense
                 onChange={(event) => this.setter(event, "participant_id")}
               />
             </li>
             <li>
-              Enter your email <br />
-              <input
-                type="text"
-                name="email"
-                value={email}
+              <p>
+                Enter your email <br />
+              </p>
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                fullWidth
+                type="email"
                 onChange={(event) => this.setter(event, "email")}
+                Dense
               />
             </li>
             <li>
+              Read the{" "}
+              <a
+                href={
+                  safebluesurl +
+                  "/participant-information-sheet/SafeBlues-PIS.pdf"
+                }
+              >
+                participant information sheet
+              </a>{" "}
+              and the{" "}
+              <a
+                href={
+                  safebluesurl +
+                  "/participant-information-sheet/SafeBlues-Consent.pdf"
+                }
+              >
+                consent form
+              </a>
+              . If you agree, tick the box below:
+              <br />
               <input
                 type="checkbox"
                 onChange={(event) =>
@@ -105,11 +142,21 @@ class Join extends React.Component {
                 }
               ></input>
               I have read the participant information sheet and the consent
-              form.
+              form. I am over 16 years of age and I agree with all of the terms.
             </li>
-
-            <input type="submit" value="Submit" />
+            <center>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </Button>
+            </center>
           </ol>
+          Note that by default by joining you will also enter the prize draws.
+          If you wish to join but wish to be excluded from the prize draws
+          e-mail the Safe Blues team to let us know.
         </form>
       </div>
     );
