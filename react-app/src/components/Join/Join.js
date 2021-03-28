@@ -136,6 +136,7 @@ class Join extends React.Component {
               </a>
               . If you agree, tick the box below:
               <br />
+              <p>
               <input
                 type="checkbox"
                 onChange={(event) =>
@@ -144,6 +145,7 @@ class Join extends React.Component {
               ></input>
               I have read the participant information sheet and the consent
               form. I am over 16 years of age and I agree with all of the terms.
+              </p>
             </li>
             <center>
               <Button
@@ -155,9 +157,11 @@ class Join extends React.Component {
               </Button>
             </center>
           </ol>
+          <p>
           Note that by default by joining you will also enter the prize draws.
           If you wish to join but wish to be excluded from the prize draws
-          e-mail the Safe Blues team to let us know.
+          e-mail the Safe Blues team to let us know at <a href="mailto:contact@safeblues.org?subject=Withdraw from prizes">contact@safeblues.org</a>.
+          </p>
         </form>
       </div>
     );

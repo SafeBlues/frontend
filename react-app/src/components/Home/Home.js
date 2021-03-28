@@ -5,6 +5,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="homeContainer">
+        <div className="content">
         <h1>
           Safe Blues: A Method for Estimation and Control in the Fight Against
           COVID-19
@@ -21,6 +22,7 @@ class Home extends React.Component {
           does not exist. Instead, we developed a safe and privacy-preserving
           digital alternative. We call this framework Safe Blues.
         </p>
+      </div>
       </div>
     );
   }

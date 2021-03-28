@@ -1,0 +1,12 @@
+div.homeContainer{
+    display: flex;
+    flex-flow: column nowrap;
+    /* justify-content: center; */
+    align-items: center;
+    padding-bottom: 50px;
+    
+}
+.content{
+    text-align: left;
+    width: 1200px;
+}
