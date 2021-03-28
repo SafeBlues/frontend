@@ -10,3 +10,23 @@ div.homeContainer{
     text-align: left;
     width: 1200px;
 }
+
+img.graphImg{
+    width: 100%;
+}
+
+.column{
+    flex: 45%;
+    padding: 5px;
+}
+.row{
+    display: flex;
+}
+
+.caption{
+    width: 70%;
+    text-align: justify;
+    font-size: smaller;
+    font-weight: 300;
+    color: rgb(42, 48, 54);
+}
