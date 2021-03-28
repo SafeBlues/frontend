@@ -4,7 +4,8 @@ import "./Join.css";
 import { Button, TextField } from "@material-ui/core";
 
 import googleplay from "./googleplay.png";
-const BFF_URL = "http://localhost:8000"; // TODO pass in the base url as prop
+// const BFF_URL = "http://localhost:8000"; // TODO pass in the base url as prop
+const BFF_URL = "http://130.216.216.231:8000"; // TODO pass in the base url as prop
 const safebluesurl = "http://safeblues.org";
 class Join extends React.Component {
   constructor(props) {
