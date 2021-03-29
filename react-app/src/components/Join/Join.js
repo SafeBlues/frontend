@@ -49,7 +49,6 @@ class Join extends React.Component {
   }
 
   render() {
-    const { participant_id, email } = this.state;
     return (
       <div className={"joinContainer"}>
         <h1>Joining The Safe Blues 2021 Experiment</h1>
