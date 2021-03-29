@@ -7,11 +7,11 @@ class Home extends React.Component {
     return (
       <div className="homeContainer">
         <div className="content">
-          <h1 class="my-3">
+          <h1 className="my-3">
             Safe Blues: A Method for Estimation and Control in the Fight Against
             COVID-19
           </h1>
-          <h2 class="my-3">Overview</h2>
+          <h2 className="my-3">Overview</h2>
           <p>
             Viral spread is a complicated function of multiple elements
             including biological properties, preventative measures such as
@@ -43,17 +43,17 @@ class Home extends React.Component {
             presented as an app on Android devices with a server back-end. We
             are now preparing for a university-wide experiment of Safe Blues.
           </p>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <img
-                class="graphImg"
+                className="graphImg"
                 src={fig1a}
                 alt="A diagram of the operation of Safe Blues."
               />
             </div>
-            <div class="column">
+            <div className="column">
               <img
-                class="graphImg"
+                className="graphImg"
                 src={fig1b}
                 alt="A diagram of the operation of Safe Blues."
               />
@@ -74,10 +74,10 @@ class Home extends React.Component {
           or outbreaks.
           </p>
           </center>
-          <h2 class="my-3">Key Links</h2>
-          <div class="text-center">
+          <h2 className="my-3">Key Links</h2>
+          <div className="text-center">
             <a
-              class="btn btn-lg btn-primary"
+              className="btn btn-lg btn-primary"
               href="https://www.cell.com/patterns/fulltext/S2666-3899(21)00034-9"
               role="button"
             >
@@ -87,13 +87,13 @@ class Home extends React.Component {
             </a>
             <br />
             <br />
-            <a class="btn btn-lg btn-primary" href="/experiment" role="button">
+            <a className="btn btn-lg btn-primary" href="/experiment" role="button">
               The 2021 Campus Experiment at The University of Auckland City
               Campus
             </a>
           </div>
           <br />
-          <h2 class="my-3">Further Papers and Documents</h2>
+          <h2 className="my-3">Further Papers and Documents</h2>
           <ul>
             <li>
               April 21, 2020:{" "}
@@ -109,7 +109,7 @@ class Home extends React.Component {
               </a>
             </li>
           </ul>
-          <h2 class="my-3">Presentations and Podcasts</h2>
+          <h2 className="my-3">Presentations and Podcasts</h2>
           <ul>
             <li>
               November 16, 2020:{" "}
@@ -159,7 +159,7 @@ class Home extends React.Component {
               (<a href="presentations/UQ_June_Science_Seminar.pdf">Slides</a>)
             </li>
           </ul>
-          <h2 class="my-3">Selected Media</h2>
+          <h2 className="my-3">Selected Media</h2>
           <ul>
             <li>
               March 12, 2021:{" "}
@@ -203,7 +203,7 @@ class Home extends React.Component {
               </a>
             </li>
           </ul>
-          <h2 class="my-3">Further Media</h2>
+          <h2 className="my-3">Further Media</h2>
           <ul>
             <li>
               March 13, 2021:{" "}
@@ -293,7 +293,7 @@ class Home extends React.Component {
               </a>
             </li>
           </ul>
-          <h2 class="my-3">Code and Data</h2>
+          <h2 className="my-3">Code and Data</h2>
           <p>
             {" "}
             See the{" "}
@@ -301,7 +301,7 @@ class Home extends React.Component {
               Safe Blues GitHub organization
             </a>
           </p>
-          <h2 class="my-3">Contributors</h2>
+          <h2 className="my-3">Contributors</h2>
           <ul>
             <li>
               <a href="https://unidirectory.auckland.ac.nz/people/profile/azam-asanjarani">
@@ -375,7 +375,7 @@ class Home extends React.Component {
               </a>
             </li>
           </ul>
-          <h2 class="my-3">With thanks to</h2>
+          <h2 className="my-3">With thanks to</h2>
           <ul>
             <li>
               <a href="https://www.linkedin.com/in/tim-macuga-06024489/">

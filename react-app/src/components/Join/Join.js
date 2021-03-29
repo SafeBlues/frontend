@@ -5,7 +5,8 @@ import { Button, TextField } from "@material-ui/core";
 
 import googleplay from "./googleplay.png";
 // const BFF_URL = "http://localhost:8000"; // TODO pass in the base url as prop
-const BFF_URL = "http://130.216.216.231:8000"; // TODO pass in the base url as prop
+// const BFF_URL = "http://130.216.216.231:8000"; // TODO pass in the base url as prop
+const BFF_URL = String(window.location.hostname)+":8000"
 const safebluesurl = "http://safeblues.org";
 class Join extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class Join extends React.Component {
               Download the Safe Blues App to your Android phone:
               <br />
               <center>
-                <div class="img-container">
+                <div className="img-container">
                   <a href="https://play.google.com/store/apps/details?id=org.safeblues.mobile">
                     <img
                       src={googleplay}
@@ -95,8 +96,8 @@ class Join extends React.Component {
                 id="outlined-basic"
                 label="Participant ID"
                 variant="outlined"
+                dense="true"
                 fullWidth
-                Dense
                 onChange={(event) => this.setter(event, "participant_id")}
               />
             </li>
@@ -111,7 +112,7 @@ class Join extends React.Component {
                 fullWidth
                 type="email"
                 onChange={(event) => this.setter(event, "email")}
-                Dense
+                dense="true"
               />
             </li>
             <li>
