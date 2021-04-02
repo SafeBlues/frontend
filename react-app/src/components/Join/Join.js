@@ -2,12 +2,22 @@ import React from "react";
 import axios from "axios";
 import "./Join.css";
 import { Button, TextField } from "@material-ui/core";
-
 import googleplay from "./googleplay.png";
-// const BFF_URL = "http://localhost:8000"; // TODO pass in the base url as prop
-// const BFF_URL = "http://130.216.216.231:8000"; // TODO pass in the base url as prop
-const BFF_URL = "http://"+String(window.location.hostname)+":8000"
-const safebluesurl = "http://safeblues.org";
+
+// const BFF_URL = "http://localhost:8000";
+// const BFF_URL = "http://130.216.216.231:8000";
+var protocol = ''
+var api_location = ''
+if (String(window.location.hostname) === 'localhost') {
+  protocol = "http://"
+  api_location = ":8000"
+} else {
+  protocol = "https://"
+  api_location = "/api"
+}
+const BFF_URL = protocol + String(window.location.hostname) + api_location
+const safebluesurl = "http://safeblues.org"; // for older static content on non-subdomain
+
 class Join extends React.Component {
   constructor(props) {
     super(props);
