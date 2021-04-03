@@ -9,6 +9,7 @@ RUN npm run build
 
 FROM nginx
 ENV PORT=8080
+# TODO need to map the port back to 3000, to emulate the dev setup.
 # needed to set the nginx port
 COPY ./site.template /etc/nginx/conf.d/site.template
 COPY --from=0 /app/build /usr/share/nginx/html

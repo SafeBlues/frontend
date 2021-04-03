@@ -38,6 +38,9 @@ export default function Header() {
           <Button color="inherit" href="/join">
             Join
           </Button>
+          <Button color="inherit" href="/stats">
+            Check your hours
+          </Button>
     </div>
   );
 }
