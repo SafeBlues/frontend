@@ -1,31 +1,15 @@
 import React from "react";
 import axios from "axios";
 import "./signin.css"; // TODO update to its own CSS
+import { Button, TextField } from "@material-ui/core";
+
 const BASE_URL = "http://localhost:8000";
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = { firstName: "first name here" };
     this.setter = this.setter.bind(this)
-    // this.updatePassword = this.updatePassword.bind(this)
-    // this.updateEmail = this.updateEmail.bind(this)
-    // this.updateFirstName = this.updateFirstName.bind(this)
-    // this.updateLastName = this.updateLastName.bind(this)
   }
-
-  // updateFirstName(event) {
-  //   this.setState({ firstName: event.target.value });
-  // }
-  
-  // updateLastName(event) { 
-  //   this.setState({ lastName: event.target.value });
-  // }
-  // updateEmail(event) {
-  //   this.setState({ email: event.target.value });
-  // }
-  // updatePassword(event) {
-  //   this.setState({ password: event.target.value });
-  // }
   setter(event, key) {
     this.setState({[key]: event.target.value})
   }
@@ -64,7 +48,6 @@ class SignUp extends React.Component {
           <form className="formContainer" onSubmit={this.handleSubmit}>
           <label>
               First Name:
-              {/* <input type="text" onChange={this.updateFirstName} name="first name" /> */}
               <input type="text" value={firstName}  onChange={(event)=> setter(event, "firstName")} name="first name" />
             </label>
             <label>

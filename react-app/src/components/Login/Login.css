@@ -1,0 +1,10 @@
+.content {
+  display: grid;
+  place-items: center;
+}
+
+div.form {
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }

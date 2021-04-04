@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import yourComponent from "./components/yourComponent";
 import YourComponent2 from "./components/yourComponent2";
+import Login from "./components/Login/Login";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Header from "./components/Header/Header";
@@ -32,6 +33,11 @@ function App() {
           <Route
             path={"/signin"}
             render={() => <SignIn signedIn={false} />} // TODO pass in the signin state
+            exact={false} // ie there are no sub routes
+          />
+          <Route
+            path={"/login"}
+            render={() => <Login signedIn={false} />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
           <Route
