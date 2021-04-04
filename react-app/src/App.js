@@ -20,7 +20,7 @@ function App() {
           <Route
               // require the word exact to prevent the partial matching of everything
               exact path={"/"}
-              render={() => <Home/>} 
+              render={() => <Stats/>} 
             />
         <Switch>
           <Route path={"/some-path"} component={yourComponent} exact={false} />

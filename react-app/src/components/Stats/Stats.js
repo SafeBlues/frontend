@@ -76,13 +76,10 @@ class Stats extends React.Component {
   render() {
     return (
       <div className={"grid"}>
-        <h1>Participant Statistics</h1>
+        <h1> Leaderboard </h1>
+        <h2>View the status of the experiment here</h2>
         <p>
-          This page lets you view your overall hours on campus, and lets you see
-          how you compare against other participants in the experiment.
-        </p>
-        <p>
-          We current have <strong>{this.state.num_participants}</strong> participants.
+          We currently have <strong>{this.state.num_participants}</strong> participants.
         </p>
         <p>
            You can help raise this number by sharing this site with your friends!
@@ -104,11 +101,12 @@ class Stats extends React.Component {
           color="primary"
           onClick={this.fetchParticipantHours}
           >
-          Submit participant_id
+          View Hours
         </Button>
         </div>
+        {/* TODO make this conditional on having submitted a participant_id */}
         <p>your hours on campus: {this.state.participant_hours_on_campus}</p>
-        <h3>See the number of hours of other staff and students here</h3>
+
         <div className="graphContainer">
           <PlotlyChartBucketed
             title="Hours of participants on campus"

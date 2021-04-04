@@ -14,7 +14,7 @@ function PlotlyChart(props) {
       type: "line",
       mode: "lines",
       // marker: { color: "red" },
-      name: "your hours on campus",
+      name: "Your hours on campus",
       line: {dash: "dash", color: 'red'}
     } 
   } else {
@@ -45,6 +45,7 @@ function PlotlyChart(props) {
             x: 1,
             bargap: 0,
           },
+          // TODO add a y and x label x: campus hours, y: number of participants
         }}
         config={{ staticPlot: true }}
       />

@@ -21,25 +21,17 @@ export default function Header() {
             </svg>
             </div>
           <Typography variant="h6" className={"title"}>
-            Safe Blues
+            Safe Blues Participant Portal
           </Typography>
-          <Button color="inherit" href="/">
-            Home
-          </Button>
-          <Button color="inherit" href="/signup">
-            Sign up
-          </Button>
-          <Button color="inherit" href="/signin">
-            Sign in
-          </Button>
-          <Button color="inherit" href="/dashboard">
-            Dashboard
+          <Button color="inherit" href="https://www.safeblues.org/experiment"> 
+          {/* TODO fix this link */}
+            Experiment Home
           </Button>
           <Button color="inherit" href="/join">
             Join
           </Button>
           <Button color="inherit" href="/stats">
-            Check your hours
+            Campus Hours
           </Button>
     </div>
   );
