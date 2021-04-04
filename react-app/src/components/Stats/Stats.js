@@ -2,11 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./Stats.css";
 import { Button, TextField } from "@material-ui/core";
-import ParticipantBarGraph from "components/ParticipantBarGraph";
-import ParticipantChart from "components/ParticipantChart";
-import PlotlyChart from "components/PlotlyChart/index";
-import { Bar, Line } from "react-chartjs-2";
-// import ParticipantBarGraph from "../ParticipantBarGraph/ParticipantBarGraph"
+import PlotlyChartBucketed from "components/PlotlyChartBucketed/index";
 // const BFF_URL = "http://localhost:8000";
 // const BFF_URL = "http://130.216.216.231:8000";
 var protocol = "";
@@ -25,10 +21,10 @@ class Stats extends React.Component {
     super(props);
     this.state = {
       participant_id: "example",
-      hours_on_campus_list: [],
       hist: [],
       bin_edges: [],
       participant_hours_on_campus: 0,
+      num_participants: "",
     };
     this.getAggregateData = this.getAggregateData.bind(this);
     this.fetchParticipantHours = this.fetchParticipantHours.bind(this);
@@ -45,10 +41,10 @@ class Stats extends React.Component {
         console.log(error);
       });
     axios
-      .get(BFF_URL + "/api/rawstats", {})
+      .get(BFF_URL + "/api/num_participants", {})
       .then((res) => {
         const data = res.data;
-        this.setState({ hours_on_campus_list: data.hours_on_campus_list });
+        this.setState({ num_participants: data.num_participants });
       })
       .catch((error) => {
         console.log(error);
@@ -85,6 +81,13 @@ class Stats extends React.Component {
           This page lets you view your overall hours on campus, and lets you see
           how you compare against other participants in the experiment.
         </p>
+        <p>
+          We current have <strong>{this.state.num_participants}</strong> participants.
+        </p>
+        <p>
+           You can help raise this number by sharing this site with your friends!
+        </p>
+        <h3>Check the number of hours you have on campus here</h3>
         <div className="inputContainer">
         <TextField
           id="outlined-basic"
@@ -105,12 +108,13 @@ class Stats extends React.Component {
         </Button>
         </div>
         <p>your hours on campus: {this.state.participant_hours_on_campus}</p>
+        <h3>See the number of hours of other staff and students here</h3>
         <div className="graphContainer">
-          <PlotlyChart
+          <PlotlyChartBucketed
+            title="Hours of participants on campus"
             participant_hours_on_campus={this.state.participant_hours_on_campus}
             hist={this.state.hist}
             bin_edges={this.state.bin_edges}
-            hours_on_campus_list={this.state.hours_on_campus_list}
           />
         </div>
       </div>

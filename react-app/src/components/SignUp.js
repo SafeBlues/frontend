@@ -7,21 +7,25 @@ class SignUp extends React.Component {
     super(props);
     this.state = { firstName: "first name here" };
     this.setter = this.setter.bind(this)
+    // this.updatePassword = this.updatePassword.bind(this)
+    // this.updateEmail = this.updateEmail.bind(this)
+    // this.updateFirstName = this.updateFirstName.bind(this)
+    // this.updateLastName = this.updateLastName.bind(this)
   }
 
   // updateFirstName(event) {
   //   this.setState({ firstName: event.target.value });
   // }
-  // 
-  updateLastName(event) { 
-    this.setState({ lastName: event.target.value });
-  }
-  updateEmail(event) {
-    this.setState({ email: event.target.value });
-  }
-  updatePassword(event) {
-    this.setState({ password: event.target.value });
-  }
+  
+  // updateLastName(event) { 
+  //   this.setState({ lastName: event.target.value });
+  // }
+  // updateEmail(event) {
+  //   this.setState({ email: event.target.value });
+  // }
+  // updatePassword(event) {
+  //   this.setState({ password: event.target.value });
+  // }
   setter(event, key) {
     this.setState({[key]: event.target.value})
   }
@@ -77,8 +81,8 @@ class SignUp extends React.Component {
               <input
                 type="password"
                 id="password_input"
-                onChange={this.updatePassword}
-                name="name"
+                onChange={(event)=> setter(event, "password")} 
+                                name="name"
               />
             </label>
             <label>
@@ -86,8 +90,8 @@ class SignUp extends React.Component {
               <input
                 type="password"
                 id="password_confirmation"
-                onChange={this.updatePassword}
-                name="name"
+                onChange={(event)=> setter(event, "passwordConfirmation")} 
+                                name="name"
               />
             </label>
             <label>
