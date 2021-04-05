@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Stats.css";
 import { Button, TextField } from "@material-ui/core";
 import PlotlyChartBucketed from "components/PlotlyChartBucketed/index";
+import { withRouter } from "react-router"
 // const BFF_URL = "http://localhost:8000";
 // const BFF_URL = "http://130.216.216.231:8000";
 var protocol = "";
@@ -20,12 +21,13 @@ class Stats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      participant_id: "example",
+      participant_id: this.props.participant_id,
       hist: [],
       bin_edges: [],
       participant_hours_on_campus: 0,
       num_participants: "",
     };
+    
     this.getAggregateData = this.getAggregateData.bind(this);
     this.fetchParticipantHours = this.fetchParticipantHours.bind(this);
     this.disableButtonCheck = this.disableButtonCheck.bind(this);
@@ -105,6 +107,7 @@ class Stats extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className={"grid"}>
         <h1> Leaderboard </h1>
@@ -124,6 +127,7 @@ class Stats extends React.Component {
             variant="outlined"
             dense="true"
             fullWidth
+            defaultValue={this.state.participant_id}
             onChange={(event) => this.setter(event, "participant_id")}
           />
           <br />
@@ -145,4 +149,4 @@ class Stats extends React.Component {
     );
   }
 }
-export default Stats;
+export default withRouter(Stats);

@@ -30,7 +30,7 @@ export default function Header() {
             Join
           </Button>
           <Button color="inherit" href="/stats">
-            Campus Hours
+            Leader board
           </Button>
     </div>
   );

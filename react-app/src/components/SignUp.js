@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import "./signin.css"; // TODO update to its own CSS
 import { Button, TextField } from "@material-ui/core";
 
 const BASE_URL = "http://localhost:8000";
