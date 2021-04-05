@@ -27,7 +27,12 @@ class Login extends React.Component {
   }
   displayLoggedIn(){
       if (this.state.loggedIn){
-          return("Login successful!")
+          return(
+            <div>
+              <p>Successfully logged in!</p>
+              <p><a href="/dashboard">view dashboard</a></p>
+            </div>
+            )
       }
   }
 

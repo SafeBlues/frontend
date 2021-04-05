@@ -2,12 +2,11 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Join from "./components/Join/Join";
 import Stats from "./components/Stats/Stats";
-
+import AdminDashboard from "components/AdminDashboard/AdminDashboard"
 function App() {
   return (
     <div className="App">
@@ -38,6 +37,12 @@ function App() {
             exact={false} // ie there are no sub routes
           />
           
+          <Route
+            path={"/dashboard"}
+            render={() => <AdminDashboard />} // TODO pass in the signin state
+            exact={true} // ie there are no sub routes
+          />
+
           <Route
             path={"/stats"}
             render={() => <Stats participant_id=""/>} // TODO pass in the signin state
