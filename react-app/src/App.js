@@ -17,7 +17,7 @@ function App() {
               // require the word exact to prevent the partial matching of everything
               exact path={"/"}
               render={() => <Stats/>} 
-              exact={true}
+              exact={true} // NOTE leave this as true
             />
         <Switch>
           <Route
@@ -40,19 +40,22 @@ function App() {
           <Route
             path={"/dashboard"}
             render={() => <AdminDashboard />} // TODO pass in the signin state
-            exact={true} // ie there are no sub routes
+            exact={false} // ie there are no sub routes
           />
 
-          <Route
-            path={"/stats"}
-            render={() => <Stats participant_id=""/>} // TODO pass in the signin state
-            exact={true} // ie there are no sub routes
-          />
           <Route
             path={"/stats/:participant_id"}
             render={({match}) => <Stats participant_id={match.params.participant_id} />} 
             exact={false}
           />
+          <Route
+            path={"/stats"}
+            render={() => <Stats />} // TODO pass in the signin state
+            exact={false} // ie there are no sub routes
+          />
+      
+          
+          
         </Switch>
       </BrowserRouter>
     </div>
