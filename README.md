@@ -1,3 +1,13 @@
+# KPMG README
+
+Please view the deployed site at https://participant.safeblues.org/
+
+still under construction is migrating these two pages from the defunct vue based
+frontend to the new react based frontend.
+
+- https://safeblues.github.io/frontend/#/admin
+- https://safeblues.github.io/frontend/#/dashboard
+
 # Safe Blues Dashboard
 ## local testing and development
 
