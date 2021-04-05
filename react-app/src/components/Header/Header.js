@@ -24,7 +24,6 @@ export default function Header() {
             Safe Blues Participant Portal
           </Typography>
           <Button color="inherit" href="https://www.safeblues.org/experiment"> 
-          {/* TODO fix this link */}
             Experiment Home
           </Button>
           <Button color="inherit" href="/join">
