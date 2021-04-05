@@ -21,15 +21,16 @@ class Login extends React.Component {
       { email: this.state.email, password: this.state.password },
       { withCredentials: true }
     );
-    console.log(res.data);
+    if (res.data.passwords_match){
+      this.setState({loggedIn: true})
+    }
   }
   displayLoggedIn(){
       if (this.state.loggedIn){
-          return("You are logged in!")
-      } else {
-          return("You are not logged in.")
+          return("Login successful!")
       }
   }
+
   render() {
     return (
       <div className="content">
