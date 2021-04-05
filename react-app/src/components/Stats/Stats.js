@@ -28,6 +28,7 @@ class Stats extends React.Component {
     };
     this.getAggregateData = this.getAggregateData.bind(this);
     this.fetchParticipantHours = this.fetchParticipantHours.bind(this);
+    this.disableButtonCheck = this.disableButtonCheck.bind(this);
   }
   getAggregateData() {
     axios
@@ -58,9 +59,14 @@ class Stats extends React.Component {
       .get(BFF_URL + "/api/stats/" + this.state.participant_id, {})
       .then((res) => {
         const data = res.data;
-        this.setState({
-          participant_hours_on_campus: data.total_hours_on_campus,
-        });
+        console.log(data);
+        if (data.status === 400) {
+          alert("Participant_id has not been linked");
+        } else {
+          this.setState({
+            participant_hours_on_campus: data.total_hours_on_campus,
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -73,36 +79,56 @@ class Stats extends React.Component {
     this.setState({ [key]: value });
   }
 
+  disableButtonCheck() {
+    if (this.state.participant_id.length === 10) {
+      return (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.fetchParticipantHours}
+        >
+          View Hours
+        </Button>
+      );
+    } else {
+      return (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.fetchParticipantHours}
+          disabled
+        >
+          Enter participant ID
+        </Button>
+      );
+    }
+  }
+
   render() {
     return (
       <div className={"grid"}>
         <h1> Leaderboard </h1>
         <h2>View the status of the experiment here</h2>
         <p>
-          We currently have <strong>{this.state.num_participants}</strong> participants.
+          We currently have <strong>{this.state.num_participants}</strong>{" "}
+          participants.
         </p>
         <p>
-           You can help raise this number by sharing this site with your friends!
+          You can help raise this number by sharing this site with your friends!
         </p>
         <h3>Check the number of hours you have on campus here</h3>
         <div className="inputContainer">
-        <TextField
-          id="outlined-basic"
-          label="Participant ID"
-          variant="outlined"
-          dense="true"
-          fullWidth
-          onChange={(event) => this.setter(event, "participant_id")}
+          <TextField
+            id="outlined-basic"
+            label="Participant ID"
+            variant="outlined"
+            dense="true"
+            fullWidth
+            onChange={(event) => this.setter(event, "participant_id")}
           />
-          <br/>
-          <br/>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.fetchParticipantHours}
-          >
-          View Hours
-        </Button>
+          <br />
+          <br />
+          {this.disableButtonCheck()}
         </div>
         {/* TODO make this conditional on having submitted a participant_id */}
         <p>your hours on campus: {this.state.participant_hours_on_campus}</p>
