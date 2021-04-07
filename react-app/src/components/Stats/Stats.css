@@ -1,56 +1,22 @@
-.joinContainer
-{
+.statsContainer{
     display: flex;
-    flex-flow: column nowrap;
-    /* justify-content: center; */
+    flex-flow: column;
+    /* max-width: 800px; */
     align-items: center;
     padding-bottom: 50px;
-}
-
-.formContainer
-{
-    display: flex;
-    flex-flow: column nowrap;
-    width:600px;
-    text-align: left;
-}
-
-.img-container {
-    padding: 15px;
-}
-
-.signup-input{
-    width: 100%;
-    margin: 10px;
-}
-
-li{
-    padding: 4px;
-}
-
-form-text-input {
-    padding: 10px;
-}
-
-.statsContainer{
-    display: grid;
-    place-items: center;
-}
-
-.grid{
-    display: grid;
-    place-items: center;
-
 }
 
 .graphContainer{
 }
 
-.inputsContainer{
+.inputContainer{
     width: 50%
 }
 
-div.button{
-    margin: 50px;
-    padding: 50px
+.inputContainer * {
+    /* margin: 50px;
+    padding: 50px */
+}
+.test{
+    background-color: red;
 }

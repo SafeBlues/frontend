@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import "./Stats.css";
 import { Button, TextField } from "@material-ui/core";
-import PlotlyChartBucketed from "components/PlotlyChartBucketed/index";
-import { withRouter } from "react-router"
+import PlotlyChartBucketed from "components/PlotlyChartBucketed/PlotlyChartBucketed";
+import { withRouter } from "react-router";
 // const BFF_URL = "http://localhost:8000";
 // const BFF_URL = "http://130.216.216.231:8000";
 var protocol = "";
@@ -21,13 +21,15 @@ class Stats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      participant_id: this.props.participant_id ? this.props.participant_id : "",
+      participant_id: this.props.participant_id
+        ? this.props.participant_id
+        : "",
       hist: [],
       bin_edges: [],
       participant_hours_on_campus: 0,
       num_participants: "",
     };
-    
+
     this.getAggregateData = this.getAggregateData.bind(this);
     this.fetchParticipantHours = this.fetchParticipantHours.bind(this);
     this.disableButtonCheck = this.disableButtonCheck.bind(this);
@@ -105,44 +107,44 @@ class Stats extends React.Component {
       );
     }
   }
-
+    
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
-      <div className={"grid"}>
-        <h1> Leaderboard </h1>
-        <h2>View the status of the experiment here</h2>
-        <p>
-          We currently have <strong>{this.state.num_participants}</strong>{" "}
-          participants.
-        </p>
-        <p>
-          You can help raise this number by sharing this site with your friends!
-        </p>
-        <h3>Check the number of hours you have on campus here</h3>
-        <div className="inputContainer">
-          <TextField
-            id="outlined-basic"
-            label="Participant ID"
-            variant="outlined"
-            dense="true"
-            fullWidth
-            defaultValue={this.state.participant_id}
-            onChange={(event) => this.setter(event, "participant_id")}
-          />
-          <br />
-          <br />
-          {this.disableButtonCheck()}
-        </div>
-        {/* TODO make this conditional on having submitted a participant_id */}
-        <p>your hours on campus: {this.state.participant_hours_on_campus}</p>
-
-        <div className="graphContainer">
+      <div>
+        <div className="statsContainer">
+          <h1> Leaderboard </h1>
+          <h2>View the status of the experiment here</h2>
+          <p>
+            We currently have <strong>{this.state.num_participants}</strong>{" "}
+            participants.
+          </p>
+          <p>
+            You can help raise this number by sharing this site with your
+            friends!
+          </p>
+          <h3>Check the number of hours you have on campus here</h3>
+          <div className="inputContainer">
+            <TextField
+              id="outlined-basic"
+              label="Participant ID"
+              variant="outlined"
+              dense="true"
+              fullWidth
+              defaultValue={this.state.participant_id}
+              onChange={(event) => this.setter(event, "participant_id")}
+            />
+          </div>
+          <div className="inputContainer">{this.disableButtonCheck()}</div>
+          {/* TODO make this conditional on having submitted a participant_id */}
+          <p>your hours on campus: {this.state.participant_hours_on_campus}</p>
           <PlotlyChartBucketed
             title="Hours of participants on campus"
             participant_hours_on_campus={this.state.participant_hours_on_campus}
             hist={this.state.hist}
             bin_edges={this.state.bin_edges}
+            // TODO make this update when the page resizes
+            width={Math.min(window.innerWidth, 900)} // sets the max width of the graph 
           />
         </div>
       </div>

@@ -63,7 +63,7 @@ class Join extends React.Component {
     return (
       <div className={"joinContainer"}>
         <h1>Joining The Safe Blues 2021 Experiment</h1>
-        <form className="formContainer">
+        <form className="formContainer" >
           <p>
             Thank you for your interest in joining the Safe Blues campus
             experiment. If you are over 16, plan to attend the University of

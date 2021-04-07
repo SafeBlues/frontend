@@ -2,4 +2,11 @@
   text-align: center;
   display: grid;
   place-items: center;
+  width: 100%;
 }
+
+/* .App{
+  display: flex;
+  flex-flow: column ;
+  text-align: center;
+} */
