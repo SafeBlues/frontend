@@ -3,7 +3,8 @@
   flex-flow: column;
   max-width: 800px;
   align-items: center;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px;e */
+  padding: 0 20px 20px 30px;
   
 }
 
