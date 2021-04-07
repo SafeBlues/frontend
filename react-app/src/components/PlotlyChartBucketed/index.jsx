@@ -45,7 +45,8 @@ function PlotlyChart(props) {
             x: 1,
             bargap: 0,
           },
-          // TODO add a y and x label x: campus hours, y: number of participants
+          xaxis: {"title": {"text": "Hours on campus"}},
+          yaxis: {"title": {"text": "Number of participants"}},
         }}
         config={{ staticPlot: true }}
       />
