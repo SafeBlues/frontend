@@ -10,7 +10,6 @@ import AdminDashboard from "components/AdminDashboard/AdminDashboard"
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header"></header> */}
       <Header/>
       <BrowserRouter>
           <Route
