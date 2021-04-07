@@ -10,7 +10,8 @@
 }
 
 .inputContainer{
-    width: 50%
+    width: 50%;
+    margin: 10px;
 }
 
 .inputContainer * {
