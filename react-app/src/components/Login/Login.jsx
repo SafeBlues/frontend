@@ -38,7 +38,10 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="content">
+      <div>
+      some content
+      <div className="loginContainer">
+
         <h1>Login</h1>
         <p>This page allows access to the admin (non-participant) dashboard.</p>
         
@@ -47,9 +50,8 @@ class Login extends React.Component {
           <TextInput label="Password" type="password" varname="password" setter={this.setter}/>
           <Button variant="contained" color="primary" onClick={event => this.handleSubmit(event)}> Submit </Button>
         </div>
-        <p>
-            {this.displayLoggedIn()}
-        </p>
+        {this.displayLoggedIn()}
+        </div>
       </div>
     );
   }

@@ -52,9 +52,6 @@ function App() {
             render={() => <Stats />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
-      
-          
-          
         </Switch>
       </BrowserRouter>
     </div>

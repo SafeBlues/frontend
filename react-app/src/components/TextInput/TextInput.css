@@ -1,7 +1,5 @@
 div.container{
-    padding: 5px;
-    display: grid;
-    place-items: center;
+    padding-bottom: 10px;
 }
 
 

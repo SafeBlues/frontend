@@ -37,8 +37,8 @@ function PlotlyChart(props) {
         title: props.title,
         legend: {
           orientation: "h",
-          yanchor: "bottom",
-          y: -0.3,
+          yanchor: "top",
+          y: 0.95,
           xanchor: "right",
           x: 1,
           bargap: 0,
