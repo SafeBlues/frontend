@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useState, useEffect } from "react"
 
 import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
@@ -7,10 +8,22 @@ import Home from "./components/Home/Home";
 import Join from "./components/Join/Join";
 import Stats from "./components/Stats/Stats";
 import AdminDashboard from "components/AdminDashboard/AdminDashboard"
+
+import checkAuth from "helpers/checkAuth.js";
+
+
+
 function App() {
+  // const initialState = checkAuth()
+  const initialState = false
+  const [loggedIn, setLoggedIn] = useState(initialState)
+  useEffect(() => {
+    checkAuth(setLoggedIn)
+  }, []) 
+  
   return (
     <div className="App">
-      <Header/>
+      <Header loggedIn={loggedIn}/>
       <BrowserRouter>
           <Route
               // require the word exact to prevent the partial matching of everything
@@ -21,7 +34,7 @@ function App() {
         <Switch>
           <Route
             path={"/login"}
-            render={() => <Login signedIn={false} />} // TODO pass in the signin state
+            render={() => <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
           {/* signup is now defunct, it is now down only via a POST from postman */}
@@ -38,7 +51,7 @@ function App() {
           
           <Route
             path={"/dashboard"}
-            render={() => <AdminDashboard />} // TODO pass in the signin state
+            render={() => <AdminDashboard loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
 
