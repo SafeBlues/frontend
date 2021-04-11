@@ -23,7 +23,7 @@ function App() {
   
   return (
     <div className="App">
-      <Header loggedIn={loggedIn}/>
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <BrowserRouter>
           <Route
               // require the word exact to prevent the partial matching of everything

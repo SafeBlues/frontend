@@ -1,26 +1,53 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import "./Header.css";
+import axios from "axios";
+import { getBaseURL } from "helpers/GetBaseURL.js";
 
-function showLoggedInPages() {
+function showLoggedInPages(props) {
   return (
-    <Button color="inherit" href="/dashboard">
-      Admin Dashboard
-    </Button>
+    <div>
+      <Button color="inherit" href="/dashboard">
+        Admin Dashboard
+      </Button>
+      {/* <Button color="inherit" onClick={handleSignout}> */}
+      <Button color="inherit" onClick={() => handleSignout(props)}>
+        Logout
+      </Button>
+    </div>
+  );
+}
+
+function test(){
+  console.log("test triggered")
+}
+
+function handleSignout(props) {
+  const url = `${getBaseURL()}/v1/signout`
+  console.log(url)
+  handleGet(`${getBaseURL()}/v1/signout`);
+  props.setLoggedIn(false)
+  
+}
+
+async function handleGet(url) {
+  const res = await axios.get(
+     `${getBaseURL()}/v1/signout`,
+    { withCredentials: true }
   );
 }
 
 function showNotLoggedInPages() {
   return (
-  <div>
-  <Button color="inherit" href="/login">
-      Login
-    </Button>
+    <div>
+      <Button color="inherit" href="/login">
+        Login
+      </Button>
 
-  <Button color="inherit" href="/join">
-  Join
-  </Button>
-  </div>
+      <Button color="inherit" href="/join">
+        Join
+      </Button>
+    </div>
   );
 }
 
@@ -40,9 +67,7 @@ export default function Header(props) {
           </g>
         </svg>
       </div>
-      <h1>
-        Safe Blues Participant Portal
-        </h1>
+      <h1>Safe Blues Participant Portal</h1>
       <Button color="inherit" href="https://www.safeblues.org/experiment">
         Experiment Home
       </Button>
@@ -50,7 +75,7 @@ export default function Header(props) {
       <Button color="inherit" href="/stats">
         Leader board
       </Button>
-      { props.loggedIn ? showLoggedInPages() : showNotLoggedInPages()}
+      {props.loggedIn ? showLoggedInPages(props) : showNotLoggedInPages()}
     </div>
   );
 }
