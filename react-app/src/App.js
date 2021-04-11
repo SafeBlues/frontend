@@ -10,6 +10,7 @@ import Stats from "./components/Stats/Stats";
 import AdminDashboard from "components/AdminDashboard/AdminDashboard"
 
 import checkAuth from "helpers/checkAuth.js";
+import CreateStrand from "components/AdminDashboard/CreateStrand/CreateStrand";
 
 
 
@@ -52,6 +53,11 @@ function App() {
           <Route
             path={"/dashboard"}
             render={() => <AdminDashboard loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} // TODO pass in the signin state
+            exact={false} // ie there are no sub routes
+          />
+           <Route
+            path={"/create-strand"}
+            render={() => <CreateStrand loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
 

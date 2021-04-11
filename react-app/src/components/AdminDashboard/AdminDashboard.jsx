@@ -56,7 +56,8 @@ function AdminDashboard(props) {
         ) : (
           <p>Something went wrong. There is no strand data to show. </p>
         )}
-        <CreateStrand />
+        {/* create strand moved to its own page */}
+        {/* <CreateStrand /> */}
       </div>
     );
   } else {

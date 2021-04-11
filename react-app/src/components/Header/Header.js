@@ -10,10 +10,14 @@ function showLoggedInPages(props) {
       <Button color="inherit" href="/dashboard">
         Admin Dashboard
       </Button>
+      <Button color="inherit" href="/create-strand">
+        Create strands
+      </Button>
       {/* <Button color="inherit" onClick={handleSignout}> */}
-      <Button color="inherit" onClick={() => handleSignout(props)}>
+      <Button color="secondary" onClick={() => handleSignout(props)}>
         Logout
       </Button>
+
     </div>
   );
 }
