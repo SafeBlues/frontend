@@ -1,71 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./AdminDashboard.css";
 import checkAuth from "helpers/checkAuth.js";
 import axios from "axios";
 import { getBaseURL } from "helpers/GetBaseURL.js";
 import ShowStrands from "./ShowStrands/ShowStrands";
 import DisplayNotAuth from "./DisplayNotAuth/DisplayNotAuth";
-import CreateStrand from "./CreateStrand/CreateStrand"
-export default class AdminDashboard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { loggedIn: false };
-    this.checkAuth = this.checkAuth.bind(this);
-  }
+import CreateStrand from "./CreateStrand/CreateStrand";
 
-  checkAuth() {
-    const res = axios
-      .get(`${getBaseURL()}/v1/validate-admin`, { withCredentials: true })
-      .then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          this.setState({ loggedIn: true, strandData: null });
-        } else {
-          console.log("Not logged in!");
-        }
-      })
-      .catch((error) => {
-        return false;
-      });
-  }
-
-  componentDidMount() {
-    this.checkAuth();
-    this.fetchStrandData();
-  }
-
-  displayLoggedIn() {
-    if (this.state.loggedIn) {
-      return (
-        <div>
-          <p>Currently logged in.</p>
-        </div>
-      );
-    } else {
-      return (
-        <p>
-          Please log into an admin account to access this page. <br />
-          You will have to contact a super-admin (Josh or Aapeli) to alter your
-          account to admin status.
-        </p>
-      );
-    }
-  }
-  fetchStrandData() {
-    axios.get(`${getBaseURL()}/strands`, {}).then((res) => {
-      // console.log(res)
-      this.setState({ strandData: res.data.strands });
+function fetchStrandData(setStrandData) {
+  axios
+    .get(`${getBaseURL()}/strands`, { withCredentials: true })
+    .then((res) => {
+      setStrandData({ strandData: res.data.strands });
     });
-  }
-  render() {
-    console.log(this.state.loggedIn);
-    if (this.state.loggedIn) {
-      return (
-        <div className="dashboardContainer">
-          <h1>Admin dashboard</h1>
-          {this.state.strandData ? (
+}
+
+function AdminDashboard(props) {
+  var [strandData, setStrandData] = useState();
+
+  useEffect(() => {
+    fetchStrandData(setStrandData);
+  }, []);
+  var numStrands = strandData ? Object.keys(strandData.strandData).length : 0;
+  if (props.loggedIn) {
+    return (
+      <div className="dashboardContainer">
+        <h1>Admin dashboard</h1>
+
+        {numStrands > 0 ? (
+          <p>We currently have {numStrands} strands.</p>
+        ) : (
+          <p> We currently do not have any strands. {numStrands} </p>
+        )}
+
+        {strandData ? (
+          <div>
+            <h2>Current Strands</h2>
             <ShowStrands
-              data={this.state.strandData}
+              data={strandData}
               columnNames={[
                 "id",
                 "seedingProbability",
@@ -80,12 +52,16 @@ export default class AdminDashboard extends React.Component {
                 "endTime",
               ]}
             />
-          ) : null}
-          <CreateStrand />
-        </div>
-      );
-    } else {
-      return <DisplayNotAuth />;
-    }
+          </div>
+        ) : (
+          <p>Something went wrong. There is no strand data to show. </p>
+        )}
+        <CreateStrand />
+      </div>
+    );
+  } else {
+    return <DisplayNotAuth />;
   }
 }
+
+export default AdminDashboard;
