@@ -20,7 +20,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(initialState)
   useEffect(() => {
     checkAuth(setLoggedIn)
-  }, []) 
+  }, [loggedIn]) 
   
   return (
     <div className="App">
