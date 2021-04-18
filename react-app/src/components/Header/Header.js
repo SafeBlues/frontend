@@ -44,9 +44,9 @@ async function handleGet(url) {
 function showNotLoggedInPages() {
   return (
     <div>
-      <Button color="inherit" href="/login">
+      {/* <Button color="inherit" href="/login">
         Login
-      </Button>
+      </Button> */}
 
       <Button color="inherit" href="/join">
         Join
