@@ -114,7 +114,7 @@ class Stats extends React.Component {
       <div>
         <div className="statsContainer">
           <h1> Leaderboard </h1>
-          <h2>View the status of the experiment here</h2>
+          <h2>Campus Hours</h2>
           <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
