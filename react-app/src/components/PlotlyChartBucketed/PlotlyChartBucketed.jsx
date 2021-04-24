@@ -4,6 +4,8 @@ import Plot from "react-plotly.js";
 
 function PlotlyChart(props) {
   var line = {};
+  const bin_width = props.bin_edges[1] - props.bin_edges[0]
+  const shifted_edges = props.bin_edges.map(x => x+bin_width/2)
   if (props.participant_hours_on_campus !== 0) {
     line = {
       x: [props.participant_hours_on_campus, props.participant_hours_on_campus],
@@ -23,7 +25,7 @@ function PlotlyChart(props) {
         line,
         {
           type: "bar",
-          x: props.bin_edges,
+          x: shifted_edges,
           y: props.hist,
           marker: {
             color: "rgb(0,119,179)",
