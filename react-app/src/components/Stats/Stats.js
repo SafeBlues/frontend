@@ -34,6 +34,7 @@ class Stats extends React.Component {
     this.fetchParticipantHours = this.fetchParticipantHours.bind(this);
     this.disableButtonCheck = this.disableButtonCheck.bind(this);
   }
+
   getAggregateData() {
     axios
       .get(BFF_URL + "/api/stats", {})
@@ -113,8 +114,7 @@ class Stats extends React.Component {
     return (
       <div>
         <div className="statsContainer">
-          <h1> Leaderboard </h1>
-          <h2>Campus Hours</h2>
+          <h1> Campus Hours Leaderboard </h1>
           <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
