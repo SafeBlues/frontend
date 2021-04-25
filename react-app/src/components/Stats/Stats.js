@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Stats.css";
 import { Button, TextField } from "@material-ui/core";
 import PlotlyChartBucketed from "components/PlotlyChartBucketed/PlotlyChartBucketed";
+import PlotlyChartSmooth from "components/PlotlyChartSmooth/PlotlyChartSmooth";
 import { withRouter } from "react-router";
 // const BFF_URL = "http://localhost:8000";
 // const BFF_URL = "http://130.216.216.231:8000";
@@ -15,7 +16,8 @@ if (String(window.location.hostname) === "localhost") {
   protocol = "https://";
   api_location = "/api";
 }
-const BFF_URL = protocol + String(window.location.hostname) + api_location;
+// const BFF_URL = protocol + String(window.location.hostname) + api_location;
+const BFF_URL = "https://participant.safeblues.org/api"
 
 class Stats extends React.Component {
   constructor(props) {
@@ -26,6 +28,8 @@ class Stats extends React.Component {
         : "",
       hist: [],
       bin_edges: [],
+      x_smooth: [],
+      y_smooth: [],
       participant_hours_on_campus: 0,
       num_participants: "",
     };
@@ -42,6 +46,8 @@ class Stats extends React.Component {
         const data = res.data;
         this.setState({ hist: data.hist });
         this.setState({ bin_edges: data.bin_edges });
+        this.setState({ x_smooth: data.x_smooth});
+        this.setState({ y_smooth: data.y_smooth});
       })
       .catch((error) => {
         console.log(error);
@@ -64,7 +70,6 @@ class Stats extends React.Component {
       .get(BFF_URL + "/api/stats/" + this.state.participant_id, {})
       .then((res) => {
         const data = res.data;
-        console.log(data);
         if (data.status === 400) {
           alert("Participant_id has not been linked");
         } else {
@@ -110,11 +115,10 @@ class Stats extends React.Component {
   }
     
   render() {
-    console.log(this.props);
     return (
       <div>
         <div className="statsContainer">
-          <h1> Campus Hours Leaderboard </h1>
+          <h1> Campus Hours xLeaderboard </h1>
           <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
@@ -138,11 +142,12 @@ class Stats extends React.Component {
           <div className="inputContainer">{this.disableButtonCheck()}</div>
           {/* TODO make this conditional on having submitted a participant_id */}
           <p>your hours on campus: {this.state.participant_hours_on_campus}</p>
-          <PlotlyChartBucketed
-            title="Hours of participants on campus"
+          <PlotlyChartSmooth
             participant_hours_on_campus={this.state.participant_hours_on_campus}
             hist={this.state.hist}
             bin_edges={this.state.bin_edges}
+            x_smooth={this.state.x_smooth}
+            y_smooth={this.state.y_smooth}
             // TODO make this update when the page resizes
             width={Math.min(window.innerWidth, 900)} // sets the max width of the graph 
           />
