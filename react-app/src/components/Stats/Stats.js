@@ -92,12 +92,14 @@ class Stats extends React.Component {
     
   render() {
     const graphArgs = {
-      participant_hours_on_campus: this.state.participant_hours_on_campus,
       hist: this.state.hist,
       bin_edges: this.state.bin_edges,
       x_smooth: this.state.x_smooth,
       y_smooth: this.state.y_smooth,
       width: Math.min(window.innerWidth, 900)
+    }
+    if(this.state.participant_id){
+      graphArgs["participant_hours_on_campus"] = this.state.participant_hours_on_campus
     }
     return (
       <div>
