@@ -1,7 +1,7 @@
-import React from "react";
+import React,{useState} from "react";
 import axios from "axios";
 import "./Stats.css";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Switch,FormControlLabel } from "@material-ui/core";
 import PlotlyChartBucketed from "components/PlotlyChartBucketed/PlotlyChartBucketed";
 import PlotlyChartSmooth from "components/PlotlyChartSmooth/PlotlyChartSmooth";
 import { withRouter } from "react-router";
@@ -32,11 +32,11 @@ class Stats extends React.Component {
       y_smooth: [],
       participant_hours_on_campus: 0,
       num_participants: "",
+      is_hist: true //false implies a continuous graph
     };
 
     this.getAggregateData = this.getAggregateData.bind(this);
     this.fetchParticipantHours = this.fetchParticipantHours.bind(this);
-    this.disableButtonCheck = this.disableButtonCheck.bind(this);
   }
 
   getAggregateData() {
@@ -64,6 +64,9 @@ class Stats extends React.Component {
   }
   componentDidMount() {
     this.getAggregateData();
+    if(this.state.participant_id){
+      this.fetchParticipantHours();
+    }
   }
   fetchParticipantHours() {
     axios
@@ -71,7 +74,7 @@ class Stats extends React.Component {
       .then((res) => {
         const data = res.data;
         if (data.status === 400) {
-          alert("Participant_id has not been linked");
+          location.replace("/join/" +  this.state.participant_id) //eslint-disable-line no-restricted-globals
         } else {
           this.setState({
             participant_hours_on_campus: data.total_hours_on_campus,
@@ -88,33 +91,16 @@ class Stats extends React.Component {
   setValue(value, key) {
     this.setState({ [key]: value });
   }
-
-  disableButtonCheck() {
-    if (this.state.participant_id.length === 10) {
-      return (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.fetchParticipantHours}
-        >
-          View Hours
-        </Button>
-      );
-    } else {
-      return (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.fetchParticipantHours}
-          disabled
-        >
-          Enter participant ID
-        </Button>
-      );
-    }
-  }
     
   render() {
+    const graphArgs = {
+      participant_hours_on_campus: this.state.participant_hours_on_campus,
+      hist: this.state.hist,
+      bin_edges: this.state.bin_edges,
+      x_smooth: this.state.x_smooth,
+      y_smooth: this.state.y_smooth,
+      width: Math.min(window.innerWidth, 900)
+    }
     return (
       <div>
         <div className="statsContainer">
@@ -123,34 +109,24 @@ class Stats extends React.Component {
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
           </p>
-          <p>
-            You can help raise this number by sharing this site with your
-            friends!
-          </p>
-          <h3>Check the number of hours you have on campus here</h3>
-          <div className="inputContainer">
-            <TextField
-              id="outlined-basic"
-              label="Participant ID"
-              variant="outlined"
-              dense="true"
-              fullWidth
-              defaultValue={this.state.participant_id}
-              onChange={(event) => this.setter(event, "participant_id")}
-            />
-          </div>
-          <div className="inputContainer">{this.disableButtonCheck()}</div>
           {/* TODO make this conditional on having submitted a participant_id */}
-          <p>your hours on campus: {this.state.participant_hours_on_campus}</p>
-          <PlotlyChartSmooth
-            participant_hours_on_campus={this.state.participant_hours_on_campus}
-            hist={this.state.hist}
-            bin_edges={this.state.bin_edges}
-            x_smooth={this.state.x_smooth}
-            y_smooth={this.state.y_smooth}
-            // TODO make this update when the page resizes
-            width={Math.min(window.innerWidth, 900)} // sets the max width of the graph 
+          {this.state.participant_id &&
+            <p>your hours on campus: {this.state.participant_hours_on_campus}</p>}
+          <FormControlLabel control={
+            <Switch
+
+            checked={this.state.is_hist}
+            onChange={()=>{this.setState({ is_hist: !this.state.is_hist })}}
+            name="checkedA"
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
+          } label="Histogram type" />
+
+          
+          {this.state.is_hist ? 
+            <PlotlyChartBucketed {...graphArgs}/> :
+            <PlotlyChartSmooth {...graphArgs}/>}
+
         </div>
       </div>
     );
