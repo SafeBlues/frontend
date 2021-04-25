@@ -26,7 +26,9 @@ class Join extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {  email: "", 
                     participant_id: this.props.participant_id ?? "", 
-                    consented: false };
+                    consented: false,
+                    success: false
+                  };
   }
   setter(event, key) {
     this.setState({ [key]: event.target.value });
@@ -48,7 +50,7 @@ class Join extends React.Component {
         )
         .then((response) => {
           console.log(response);
-          alert("Successfully connected participant_id and email.");
+          this.setState({success: true});
         })
         .catch((error) => {
           if (error.response) {
@@ -65,6 +67,7 @@ class Join extends React.Component {
     return (
       <div className={"joinContainer"}>
         <h1>Joining The Safe Blues 2021 Experiment</h1>
+        {!this.state.success ?
         <form className="formContainer" >
           <p>
             Thank you for your interest in joining the Safe Blues campus
@@ -176,6 +179,9 @@ class Join extends React.Component {
           e-mail the Safe Blues team to let us know at <a href="mailto:contact@safeblues.org?subject=Withdraw from prizes">contact@safeblues.org</a>.
           </p>
         </form>
+        :
+        <p>Successfully signed up. Thank you for participating in the Safe Blues experiment and helping advance science. </p>
+        }
       </div>
     );
   }
