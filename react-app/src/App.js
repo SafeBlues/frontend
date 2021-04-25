@@ -45,11 +45,15 @@ function App() {
             exact={false} // ie there are no sub routes
           /> */}
           <Route
+            path={"/join/:participant_id"}
+            render={({match}) => <Join participant_id={match.params.participant_id} />} 
+            exact={false}
+          />         
+          <Route
             path={"/join"}
             render={() => <Join />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
-          
           <Route
             path={"/dashboard"}
             render={() => <AdminDashboard loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} // TODO pass in the signin state
@@ -60,7 +64,6 @@ function App() {
             render={() => <CreateStrand loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} // TODO pass in the signin state
             exact={false} // ie there are no sub routes
           />
-
           <Route
             path={"/stats/:participant_id"}
             render={({match}) => <Stats participant_id={match.params.participant_id} />} 

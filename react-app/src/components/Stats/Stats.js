@@ -23,9 +23,7 @@ class Stats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      participant_id: this.props.participant_id
-        ? this.props.participant_id
-        : "",
+      participant_id: this.props.participant_id ?? "",
       hist: [],
       bin_edges: [],
       x_smooth: [],

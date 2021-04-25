@@ -24,7 +24,9 @@ class Join extends React.Component {
     this.setter = this.setter.bind(this);
     this.setValue = this.setValue.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { email: "", participant_id: "", consented: false };
+    this.state = {  email: "", 
+                    participant_id: this.props.participant_id ?? "", 
+                    consented: false };
   }
   setter(event, key) {
     this.setState({ [key]: event.target.value });
@@ -109,6 +111,7 @@ class Join extends React.Component {
                 dense="true"
                 fullWidth
                 onChange={(event) => this.setter(event, "participant_id")}
+                value = {this.state.participant_id}
               />
             </li>
             <li>
