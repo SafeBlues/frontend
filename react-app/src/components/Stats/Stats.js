@@ -118,7 +118,7 @@ class Stats extends React.Component {
     return (
       <div>
         <div className="statsContainer">
-          <h1> Campus Hours xLeaderboard </h1>
+          <h1> Campus Hours Leaderboard </h1>
           <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
