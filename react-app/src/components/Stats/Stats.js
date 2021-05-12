@@ -5,19 +5,7 @@ import { Button, TextField, Switch,FormControlLabel } from "@material-ui/core";
 import PlotlyChartBucketed from "components/PlotlyChartBucketed/PlotlyChartBucketed";
 import PlotlyChartSmooth from "components/PlotlyChartSmooth/PlotlyChartSmooth";
 import { withRouter } from "react-router";
-// const BFF_URL = "http://localhost:8000";
-// const BFF_URL = "http://130.216.216.231:8000";
-var protocol = "";
-var api_location = "";
-if (String(window.location.hostname) === "localhost") {
-  protocol = "http://";
-  api_location = ":8000";
-} else {
-  protocol = "https://";
-  api_location = "/api";
-}
-// const BFF_URL = protocol + String(window.location.hostname) + api_location;
-const BFF_URL = "https://participant.safeblues.org/api"
+import { BFF_URL } from "../../constants"
 
 class Stats extends React.Component {
   constructor(props) {
