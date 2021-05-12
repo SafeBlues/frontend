@@ -2,6 +2,6 @@
 FROM node:alpine
 WORKDIR /app
 COPY ./react-app/package*.json ./
-RUN npm install
+RUN yarn
 COPY ./react-app ./
-CMD npm run start
+CMD yarn start

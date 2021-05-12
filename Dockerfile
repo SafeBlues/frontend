@@ -2,9 +2,9 @@
 FROM node:alpine
 WORKDIR /app
 COPY ./react-app/package.json ./
-RUN npm install
+RUN yarn
 COPY ./react-app ./
-RUN npm run build
+RUN yarn build
 # RUN PHASE
 
 FROM nginx
