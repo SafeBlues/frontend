@@ -1,5 +1,5 @@
-import { BFF_URL } from "../constants"
+import { BFF_URL } from "../constants";
 
 export function getBaseURL() {
-  return BFF_URL
-};
+  return BFF_URL;
+}

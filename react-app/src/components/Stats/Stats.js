@@ -1,11 +1,11 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Stats.css";
-import { Button, TextField, Switch,FormControlLabel } from "@material-ui/core";
+import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 import PlotlyChartBucketed from "components/PlotlyChartBucketed/PlotlyChartBucketed";
 import PlotlyChartSmooth from "components/PlotlyChartSmooth/PlotlyChartSmooth";
 import { withRouter } from "react-router";
-import { BFF_URL } from "../../constants"
+import { BFF_URL } from "../../constants";
 
 class Stats extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Stats extends React.Component {
       y_smooth: [],
       participant_hours_on_campus: 0,
       num_participants: "",
-      is_hist: true //false implies a continuous graph
+      is_hist: true, //false implies a continuous graph
     };
 
     this.getAggregateData = this.getAggregateData.bind(this);
@@ -32,8 +32,8 @@ class Stats extends React.Component {
         const data = res.data;
         this.setState({ hist: data.hist });
         this.setState({ bin_edges: data.bin_edges });
-        this.setState({ x_smooth: data.x_smooth});
-        this.setState({ y_smooth: data.y_smooth});
+        this.setState({ x_smooth: data.x_smooth });
+        this.setState({ y_smooth: data.y_smooth });
       })
       .catch((error) => {
         console.log(error);
@@ -50,7 +50,7 @@ class Stats extends React.Component {
   }
   componentDidMount() {
     this.getAggregateData();
-    if(this.state.participant_id){
+    if (this.state.participant_id) {
       this.fetchParticipantHours();
     }
   }
@@ -60,7 +60,7 @@ class Stats extends React.Component {
       .then((res) => {
         const data = res.data;
         if (data.status === 400) {
-          location.replace("/join/" +  this.state.participant_id) //eslint-disable-line no-restricted-globals
+          location.replace("/join/" + this.state.participant_id); //eslint-disable-line no-restricted-globals
         } else {
           this.setState({
             participant_hours_on_campus: data.total_hours_on_campus,
@@ -77,17 +77,18 @@ class Stats extends React.Component {
   setValue(value, key) {
     this.setState({ [key]: value });
   }
-    
+
   render() {
     const graphArgs = {
       hist: this.state.hist,
       bin_edges: this.state.bin_edges,
       x_smooth: this.state.x_smooth,
       y_smooth: this.state.y_smooth,
-      width: Math.min(window.innerWidth, 900)
-    }
-    if(this.state.participant_id){
-      graphArgs["participant_hours_on_campus"] = this.state.participant_hours_on_campus
+      width: Math.min(window.innerWidth, 900),
+    };
+    if (this.state.participant_id) {
+      graphArgs["participant_hours_on_campus"] =
+        this.state.participant_hours_on_campus;
     }
     return (
       <div>
@@ -98,23 +99,30 @@ class Stats extends React.Component {
             participants.
           </p>
           {/* TODO make this conditional on having submitted a participant_id */}
-          {this.state.participant_id &&
-            <p>your hours on campus: {this.state.participant_hours_on_campus}</p>}
-          <FormControlLabel control={
-            <Switch
-
-            checked={this.state.is_hist}
-            onChange={()=>{this.setState({ is_hist: !this.state.is_hist })}}
-            name="checkedA"
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          {this.state.participant_id && (
+            <p>
+              your hours on campus: {this.state.participant_hours_on_campus}
+            </p>
+          )}
+          <FormControlLabel
+            control={
+              <Switch
+                checked={this.state.is_hist}
+                onChange={() => {
+                  this.setState({ is_hist: !this.state.is_hist });
+                }}
+                name="checkedA"
+                inputProps={{ "aria-label": "secondary checkbox" }}
+              />
+            }
+            label="Histogram type"
           />
-          } label="Histogram type" />
 
-          
-          {this.state.is_hist ? 
-            <PlotlyChartBucketed {...graphArgs}/> :
-            <PlotlyChartSmooth {...graphArgs}/>}
-
+          {this.state.is_hist ? (
+            <PlotlyChartBucketed {...graphArgs} />
+          ) : (
+            <PlotlyChartSmooth {...graphArgs} />
+          )}
         </div>
       </div>
     );

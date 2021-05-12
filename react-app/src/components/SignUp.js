@@ -8,10 +8,10 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = { firstName: "first name here" };
-    this.setter = this.setter.bind(this)
+    this.setter = this.setter.bind(this);
   }
   setter(event, key) {
-    this.setState({[key]: event.target.value})
+    this.setState({ [key]: event.target.value });
   }
 
   async handleSubmit(event) {
@@ -25,7 +25,12 @@ class SignUp extends React.Component {
     console.log({ password: this.state.password, email: this.state.email });
     const res = await axios.post(
       `${BASE_URL}/v1/participants`,
-      { first_name: this.state.firstName, last_name: this.state.lastName, email: this.state.email, password: this.state.password },
+      {
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+      },
       { withCredentials: true }
     );
     console.log(res.data);
@@ -39,24 +44,39 @@ class SignUp extends React.Component {
     }
   }
   render() {
-    const {firstName, lastName, email} = this.state // do this all the time
-    const {setter} = this // generally don't bother doing this
+    const { firstName, lastName, email } = this.state; // do this all the time
+    const { setter } = this; // generally don't bother doing this
     if (this.props.signedIn === false) {
       return (
         <div className="signinContainer">
           <h1>Sign Up For Safe Blues:</h1>
           <form className="formContainer" onSubmit={this.handleSubmit}>
-          <label>
+            <label>
               First Name:
-              <input type="text" value={firstName}  onChange={(event)=> setter(event, "firstName")} name="first name" />
+              <input
+                type="text"
+                value={firstName}
+                onChange={(event) => setter(event, "firstName")}
+                name="first name"
+              />
             </label>
             <label>
               last Name:
-              <input type="text" value={lastName} onChange={(event)=> setter(event, "lastName")} name="last name" />
+              <input
+                type="text"
+                value={lastName}
+                onChange={(event) => setter(event, "lastName")}
+                name="last name"
+              />
             </label>
             <label>
               Email:
-              <input type="text" value={email} onChange={(event)=> setter(event, "email")} name="email" />
+              <input
+                type="text"
+                value={email}
+                onChange={(event) => setter(event, "email")}
+                name="email"
+              />
             </label>
 
             <label>
@@ -64,8 +84,8 @@ class SignUp extends React.Component {
               <input
                 type="password"
                 id="password_input"
-                onChange={(event)=> setter(event, "password")} 
-                                name="name"
+                onChange={(event) => setter(event, "password")}
+                name="name"
               />
             </label>
             <label>
@@ -73,15 +93,15 @@ class SignUp extends React.Component {
               <input
                 type="password"
                 id="password_confirmation"
-                onChange={(event)=> setter(event, "passwordConfirmation")} 
-                                name="name"
+                onChange={(event) => setter(event, "passwordConfirmation")}
+                name="name"
               />
             </label>
             <label>
               Show Password
               <input type="checkbox" onClick={this.showPassword} />
             </label>
-              <input type="submit" value="Create user" />
+            <input type="submit" value="Create user" />
           </form>
 
           <input type="button" value="test login" onClick={this.sampleFunc} />

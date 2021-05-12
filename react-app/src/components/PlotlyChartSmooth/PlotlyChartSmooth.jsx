@@ -4,8 +4,8 @@ import Plot from "react-plotly.js";
 
 function PlotlyChart(props) {
   var line = {};
-  const bin_width = props.bin_edges[1] - props.bin_edges[0]
-  const shifted_edges = props.bin_edges.map(x => x+bin_width/2)
+  const bin_width = props.bin_edges[1] - props.bin_edges[0];
+  const shifted_edges = props.bin_edges.map((x) => x + bin_width / 2);
   if (props.participant_hours_on_campus !== undefined) {
     line = {
       x: [props.participant_hours_on_campus, props.participant_hours_on_campus],
@@ -21,8 +21,7 @@ function PlotlyChart(props) {
   }
   return (
     <Plot
-      data={
-        [
+      data={[
         line,
         {
           type: "scatter",
@@ -30,10 +29,10 @@ function PlotlyChart(props) {
           y: props.y_smooth,
           marker: {
             color: "rgb(0,119,179)",
-            opacity: 0.0
+            opacity: 0.0,
           },
           name: "Aggregate hours on campus",
-          fill: "tozeroy"
+          fill: "tozeroy",
         },
       ]}
       layout={{
@@ -48,18 +47,18 @@ function PlotlyChart(props) {
           x: 1,
           bargap: 0,
         },
-        xaxis: {  title: { text: "Hours on campus" },
-                  showgrid: false,
-                  tickmode: "auto",
-                  nticks: 10},
+        xaxis: {
+          title: { text: "Hours on campus" },
+          showgrid: false,
+          tickmode: "auto",
+          nticks: 10,
+        },
         yaxis: { tickvals: [] },
       }}
-      config={
-        {
-          staticPlot: true,
-          // responsive: true,
-        }
-      }
+      config={{
+        staticPlot: true,
+        // responsive: true,
+      }}
     />
   );
 }

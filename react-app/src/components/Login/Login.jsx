@@ -74,9 +74,11 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        {this.props.loggedIn ? this.displayLoggedIn() : this.displayNotLoggedIn()}
+        {this.props.loggedIn
+          ? this.displayLoggedIn()
+          : this.displayNotLoggedIn()}
       </div>
-      )
+    );
   }
 }
 export default Login;

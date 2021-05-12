@@ -14,17 +14,15 @@ function ShowStrands(props) {
   for (const strand in props.data) {
     rows.push(Object.values(props.data[strand]));
   }
-  var columns
-  if (props.columnNames){
-    columns = props.columnNames
+  var columns;
+  if (props.columnNames) {
+    columns = props.columnNames;
   } else {
     columns = Object.keys(props.data[0]);
   }
   return (
     <div className="showStrandsContainer">
-      
-
-        {/* props.data:{JSON.stringify(props.data)} */}
+      {/* props.data:{JSON.stringify(props.data)} */}
 
       <TableContainer component={Paper}>
         <Table className="table" size="small" aria-label="a dense table">
@@ -36,12 +34,12 @@ function ShowStrands(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-          {props.data.strandData.map((row) => (
+            {props.data.strandData.map((row) => (
               <TableRow key={row.name}>
-                { Object.keys(row).map((key) => ( 
-                    <TableCell component="th" scope="row">
-                        {row[key]}
-                    </TableCell>
+                {Object.keys(row).map((key) => (
+                  <TableCell component="th" scope="row">
+                    {row[key]}
+                  </TableCell>
                 ))}
               </TableRow>
             ))}

@@ -1,23 +1,23 @@
-.statsContainer{
-    display: flex;
-    flex-flow: column;
-    /* max-width: 800px; */
-    align-items: center;
-    padding-bottom: 50px;
+.statsContainer {
+  display: flex;
+  flex-flow: column;
+  /* max-width: 800px; */
+  align-items: center;
+  padding-bottom: 50px;
 }
 
-.graphContainer{
+.graphContainer {
 }
 
-.inputContainer{
-    width: 50%;
-    margin: 10px;
+.inputContainer {
+  width: 50%;
+  margin: 10px;
 }
 
 .inputContainer * {
-    /* margin: 50px;
+  /* margin: 50px;
     padding: 50px */
 }
-.test{
-    background-color: red;
+.test {
+  background-color: red;
 }

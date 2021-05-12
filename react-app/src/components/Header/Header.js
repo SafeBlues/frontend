@@ -17,28 +17,25 @@ function showLoggedInPages(props) {
       <Button color="secondary" onClick={() => handleSignout(props)}>
         Logout
       </Button>
-
     </div>
   );
 }
 
-function test(){
-  console.log("test triggered")
+function test() {
+  console.log("test triggered");
 }
 
 function handleSignout(props) {
-  const url = `${getBaseURL()}/v1/signout`
-  console.log(url)
+  const url = `${getBaseURL()}/v1/signout`;
+  console.log(url);
   handleGet(`${getBaseURL()}/v1/signout`);
-  props.setLoggedIn(false)
-  
+  props.setLoggedIn(false);
 }
 
 async function handleGet(url) {
-  const res = await axios.get(
-     `${getBaseURL()}/v1/signout`,
-    { withCredentials: true }
-  );
+  const res = await axios.get(`${getBaseURL()}/v1/signout`, {
+    withCredentials: true,
+  });
 }
 
 function showNotLoggedInPages() {

@@ -8,15 +8,11 @@ function CreateStrand(props) {
   const [infectionProbabilityMapP, setInfectionProbabilityMapP] = useState();
   const [infectionProbabilityMapK, setInfectionProbabilityMapK] = useState();
   const [infectionProbabilityMapL, setInfectionProbabilityMapL] = useState();
-  const [
-    incubationPeriodHoursAlpha,
-    setIncubationPeriodHoursAlpha,
-  ] = useState();
+  const [incubationPeriodHoursAlpha, setIncubationPeriodHoursAlpha] =
+    useState();
   const [incubationPeriodHoursBeta, setIncubationPeriodHoursBeta] = useState();
-  const [
-    infectiousPeriodHoursAlpha,
-    setInfectiousPeriodHoursAlpha,
-  ] = useState();
+  const [infectiousPeriodHoursAlpha, setInfectiousPeriodHoursAlpha] =
+    useState();
   const [infectiousPeriodHoursBeta, setInfectiousPeriodHoursBeta] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
@@ -68,7 +64,7 @@ function CreateStrand(props) {
   ];
   // just gets the names array
   // const strandParameters = strandParameterKeys.map(key => Object.values(key)[0])
- var payload = {
+  var payload = {
     strandId: strandId,
     seedingProbability: seedingProbability,
     infectionProbabilityMapP: infectionProbabilityMapP,

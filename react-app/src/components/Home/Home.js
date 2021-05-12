@@ -60,19 +60,19 @@ class Home extends React.Component {
             </div>
           </div>
           <center>
-          <p className={"caption"}>
-          Illustration of Safe Blues on a simulated epidemic. The blue lines
-          represent Safe Blues strands, the red markers are the true numbers of
-          infectives, and the blue line represent a Safe Blues prediction of the
-          state of the epidemic. The simulation assumes that real case numbers
-          are delayed by 15 days, which reflects the reality of COVID-19: a long
-          incubation period and mild symptoms at the start of infection mean
-          that diagnoses are significantly delayed, while Safe Blues data is
-          received in real time. In this way, the Safe Blues framework may
-          provide unique, invaluable visibility into the current state of the
-          epidemic and a powerful tool for early detection of subsequent waves
-          or outbreaks.
-          </p>
+            <p className={"caption"}>
+              Illustration of Safe Blues on a simulated epidemic. The blue lines
+              represent Safe Blues strands, the red markers are the true numbers
+              of infectives, and the blue line represent a Safe Blues prediction
+              of the state of the epidemic. The simulation assumes that real
+              case numbers are delayed by 15 days, which reflects the reality of
+              COVID-19: a long incubation period and mild symptoms at the start
+              of infection mean that diagnoses are significantly delayed, while
+              Safe Blues data is received in real time. In this way, the Safe
+              Blues framework may provide unique, invaluable visibility into the
+              current state of the epidemic and a powerful tool for early
+              detection of subsequent waves or outbreaks.
+            </p>
           </center>
           <h2 className="my-3">Key Links</h2>
           <div className="text-center">
@@ -87,7 +87,11 @@ class Home extends React.Component {
             </a>
             <br />
             <br />
-            <a className="btn btn-lg btn-primary" href="/experiment" role="button">
+            <a
+              className="btn btn-lg btn-primary"
+              href="/experiment"
+              role="button"
+            >
               The 2021 Campus Experiment at The University of Auckland City
               Campus
             </a>
