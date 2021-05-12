@@ -1,7 +1,5 @@
-# BUILD PHASE
 FROM node:alpine
 WORKDIR /app
-COPY ./react-app/package*.json ./
-RUN yarn
 COPY ./react-app ./
+RUN yarn
 CMD yarn start
