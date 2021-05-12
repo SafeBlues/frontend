@@ -107,14 +107,17 @@ class Stats extends React.Component {
               <p>
                 Your hours on campus:{" "}
                 <b>{this.state.participant_hours_on_campus}</b>
+                {this.state.participant_hours_on_campus !==
+                  this.state.participant_hours_eligible && (
+                  <>
+                    {" "}
+                    (only <b>{this.state.participant_hours_eligible}</b> hours
+                    are eligible for the{" "}
+                    <a href="https://safeblues.org/prizes">prize draw</a>)
+                  </>
+                )}
+                .
               </p>
-              {this.state.participant_hours_on_campus !==
-                this.state.participant_hours_eligible && (
-                <p>
-                  Only <b>{this.state.participant_hours_eligible}</b> hours are
-                  eligible for the price draw.
-                </p>
-              )}
             </>
           )}
           <FormControlLabel
