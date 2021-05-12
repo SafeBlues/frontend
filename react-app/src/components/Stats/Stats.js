@@ -1,3 +1,4 @@
+import Header from "../Header/Header";
 import React from "react";
 import axios from "axios";
 import "./Stats.css";
@@ -17,6 +18,7 @@ class Stats extends React.Component {
       x_smooth: [],
       y_smooth: [],
       participant_hours_on_campus: 0,
+      participant_hours_eligible: 0,
       num_participants: "",
       is_hist: true, //false implies a continuous graph
     };
@@ -64,6 +66,7 @@ class Stats extends React.Component {
         } else {
           this.setState({
             participant_hours_on_campus: data.total_hours_on_campus,
+            participant_hours_eligible: data.eligible_hours,
           });
         }
       })
@@ -88,21 +91,31 @@ class Stats extends React.Component {
     };
     if (this.state.participant_id) {
       graphArgs["participant_hours_on_campus"] =
-        this.state.participant_hours_on_campus;
+        this.state.participant_hours_eligible;
     }
     return (
       <div>
         <div className="statsContainer">
-          <h1>Campus Hours Leaderboard</h1>
+          <Header title="Campus Hours Leaderboard" />
           <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
           </p>
           {/* TODO make this conditional on having submitted a participant_id */}
           {this.state.participant_id && (
-            <p>
-              your hours on campus: {this.state.participant_hours_on_campus}
-            </p>
+            <>
+              <p>
+                Your hours on campus:{" "}
+                <b>{this.state.participant_hours_on_campus}</b>
+              </p>
+              {this.state.participant_hours_on_campus !==
+                this.state.participant_hours_eligible && (
+                <p>
+                  Only <b>{this.state.participant_hours_eligible}</b> hours are
+                  eligible for the price draw.
+                </p>
+              )}
+            </>
           )}
           <FormControlLabel
             control={

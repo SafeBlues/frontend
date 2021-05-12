@@ -18,7 +18,7 @@ export default function Header(props) {
           </g>
         </svg>
       </div>
-      <h1>Safe Blues Participant Portal</h1>
+      <h1>{props.title}</h1>
       <Button color="inherit" href="https://www.safeblues.org/experiment">
         Experiment Home
       </Button>

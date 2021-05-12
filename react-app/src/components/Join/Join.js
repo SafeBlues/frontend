@@ -1,3 +1,4 @@
+import Header from "../Header/Header";
 import React from "react";
 import axios from "axios";
 import "./Join.css";
@@ -54,7 +55,7 @@ class Join extends React.Component {
   render() {
     return (
       <div className={"joinContainer"}>
-        <h1>Joining The Safe Blues 2021 Experiment</h1>
+        <Header title="Joining The Safe Blues 2021 Experiment" />
         {!this.state.success ? (
           <form className="formContainer">
             <p>
