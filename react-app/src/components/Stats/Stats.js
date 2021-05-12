@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import "./Stats.css";
-import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
+import { Switch, FormControlLabel } from "@material-ui/core";
 import PlotlyChartBucketed from "components/PlotlyChartBucketed/PlotlyChartBucketed";
 import PlotlyChartSmooth from "components/PlotlyChartSmooth/PlotlyChartSmooth";
 import { withRouter } from "react-router";
-import { BFF_URL } from "../../constants";
+import { BACKEND_URL } from "../../constants";
 
 class Stats extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Stats extends React.Component {
 
   getAggregateData() {
     axios
-      .get(BFF_URL + "/api/stats", {})
+      .get(BACKEND_URL + "/v3/stats", {})
       .then((res) => {
         const data = res.data;
         this.setState({ hist: data.hist });
@@ -39,7 +39,7 @@ class Stats extends React.Component {
         console.log(error);
       });
     axios
-      .get(BFF_URL + "/api/num_participants", {})
+      .get(BACKEND_URL + "/v3/num_participants", {})
       .then((res) => {
         const data = res.data;
         this.setState({ num_participants: data.num_participants });
@@ -56,7 +56,7 @@ class Stats extends React.Component {
   }
   fetchParticipantHours() {
     axios
-      .get(BFF_URL + "/api/stats/" + this.state.participant_id, {})
+      .get(BACKEND_URL + "/v3/stats/" + this.state.participant_id, {})
       .then((res) => {
         const data = res.data;
         if (data.status === 400) {
@@ -93,7 +93,7 @@ class Stats extends React.Component {
     return (
       <div>
         <div className="statsContainer">
-          <h1> Campus Hours Leaderboard </h1>
+          <h1>Campus Hours Leaderboard</h1>
           <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.

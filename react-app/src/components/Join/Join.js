@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Join.css";
 import { Button, TextField } from "@material-ui/core";
 import googleplay from "./googleplay.png";
-import { BFF_URL, safebluesurl } from "../../constants";
+import { BACKEND_URL, STATIC_URL } from "../../constants";
 
 class Join extends React.Component {
   constructor(props) {
@@ -27,9 +27,9 @@ class Join extends React.Component {
   async handleSubmit(event) {
     if (this.state.consented === true) {
       console.log("submitting...");
-      const res = await axios
+      await axios
         .post(
-          `${BFF_URL}/v2/participants`,
+          `${BACKEND_URL}/v3/participants`,
           {
             email: this.state.email,
             participant_id: this.state.participant_id,
@@ -63,7 +63,7 @@ class Join extends React.Component {
               Auckland city campus during parts of 2021, and have an Android
               mobile device you are welcomed to join. You are advised to first
               read the online{" "}
-              <a href={safebluesurl + "/participant-information-sheet/"}>
+              <a href={STATIC_URL + "/participant-information-sheet/"}>
                 participant information sheet
               </a>
               .{/* TODO  add the link and recreate the information sheet*/}
@@ -125,7 +125,7 @@ class Join extends React.Component {
                 Read the{" "}
                 <a
                   href={
-                    safebluesurl +
+                    STATIC_URL +
                     "/participant-information-sheet/SafeBlues-PIS.pdf"
                   }
                 >
@@ -134,7 +134,7 @@ class Join extends React.Component {
                 and the{" "}
                 <a
                   href={
-                    safebluesurl +
+                    STATIC_URL +
                     "/participant-information-sheet/SafeBlues-Consent.pdf"
                   }
                 >

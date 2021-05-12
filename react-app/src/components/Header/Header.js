@@ -1,56 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import "./Header.css";
-import axios from "axios";
-import { getBaseURL } from "helpers/GetBaseURL.js";
-
-function showLoggedInPages(props) {
-  return (
-    <div>
-      <Button color="inherit" href="/dashboard">
-        Admin Dashboard
-      </Button>
-      <Button color="inherit" href="/create-strand">
-        Create strands
-      </Button>
-      {/* <Button color="inherit" onClick={handleSignout}> */}
-      <Button color="secondary" onClick={() => handleSignout(props)}>
-        Logout
-      </Button>
-    </div>
-  );
-}
-
-function test() {
-  console.log("test triggered");
-}
-
-function handleSignout(props) {
-  const url = `${getBaseURL()}/v1/signout`;
-  console.log(url);
-  handleGet(`${getBaseURL()}/v1/signout`);
-  props.setLoggedIn(false);
-}
-
-async function handleGet(url) {
-  const res = await axios.get(`${getBaseURL()}/v1/signout`, {
-    withCredentials: true,
-  });
-}
-
-function showNotLoggedInPages() {
-  return (
-    <div>
-      {/* <Button color="inherit" href="/login">
-        Login
-      </Button> */}
-
-      <Button color="inherit" href="/join">
-        Join
-      </Button>
-    </div>
-  );
-}
 
 export default function Header(props) {
   return (
@@ -76,7 +26,9 @@ export default function Header(props) {
       <Button color="inherit" href="/stats">
         Leader board
       </Button>
-      {props.loggedIn ? showLoggedInPages(props) : showNotLoggedInPages()}
+      <Button color="inherit" href="/join">
+        Join
+      </Button>
     </div>
   );
 }
