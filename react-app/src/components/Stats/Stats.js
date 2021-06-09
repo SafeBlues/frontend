@@ -98,6 +98,13 @@ class Stats extends React.Component {
         <div className="statsContainer">
           <Header title="Campus Hours Leaderboard" />
           <p>
+            <b>
+              Note that Phase 1 has now concluded. This reflects hours collected
+              between May 1st and June 10th. Please stay tuned for Phase 2
+              starting July 18th for another chance to win prizes!
+            </b>
+          </p>
+          <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
           </p>
