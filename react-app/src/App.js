@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Join from "./components/Join/Join";
 import Stats from "./components/Stats/Stats";
+import Referral from "./components/Referral/Referral";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             )}
           />
           <Route path={"/stats"} render={() => <Stats />} />
+          <Route path={"/referral"} render={() => <Referral />}/>
         </Switch>
       </BrowserRouter>
     </div>

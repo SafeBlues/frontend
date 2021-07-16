@@ -1,0 +1,36 @@
+.referralContainer {
+    display: flex;
+    flex-flow: column;
+    max-width: 800px;
+    align-items: left;
+    /* padding-bottom: 50px;e */
+    padding: 0 20px 20px 30px;
+  }
+  
+  .formContainer {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: left;
+  }
+  
+  .img-container {
+    padding: 15px;
+  }
+  
+  .signup-input {
+    width: 100%;
+    margin: 10px;
+  }
+  
+  li {
+    padding: 4px;
+  }
+  
+  form-text-input {
+    padding: 10px;
+  }
+  
+  p {
+    margin: 16px;
+  }
+  
