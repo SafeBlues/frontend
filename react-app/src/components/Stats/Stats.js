@@ -99,9 +99,8 @@ class Stats extends React.Component {
           <Header title="Campus Hours Leaderboard" />
           <p>
             <b>
-              Note that Phase 1 has now concluded. This reflects hours collected
-              between May 1st and June 10th. Please stay tuned for Phase 2
-              starting July 18th for another chance to win prizes!
+              Phase 2 has now started, and these are your hours collected during
+              Phase 2 only.
             </b>
           </p>
           <p>
