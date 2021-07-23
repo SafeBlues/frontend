@@ -26,16 +26,16 @@ class Referral extends React.Component {
         this.setState({ [key]: value });
       }
 
-    async handleSubmit(event) {
-        await axios
+    handleSubmit(event) {
+        axios
           .get(`${BACKEND_URL}/v3/referral/${this.state.participant_id}`, {})
-          .this((res) => {
+          .then((res) => {
               const data = res.data;
               if (data.status === 400) {
                  this.setState({response: "Unrecognised participant ID"});
               } else {
                   this.setState({referral_code: data.referral_code});
-                  this.setState({response: `Your referral code is ${this.state.participant_id}`});
+                  this.setState({response: `Your referral code is ${this.state.referral_code}`});
               }
           })
           .catch((error) => {
