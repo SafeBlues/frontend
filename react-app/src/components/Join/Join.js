@@ -15,6 +15,7 @@ class Join extends React.Component {
     this.state = {
       email: "",
       participant_id: this.props.participant_id ?? "",
+      referrer: "",
       consented: false,
       success: false,
     };
@@ -34,6 +35,7 @@ class Join extends React.Component {
           {
             email: this.state.email,
             participant_id: this.state.participant_id,
+            referrer: this.state.referrer
           },
           { withCredentials: true }
         )
@@ -106,6 +108,19 @@ class Join extends React.Component {
                   fullWidth
                   onChange={(event) => this.setter(event, "participant_id")}
                   value={this.state.participant_id}
+                />
+              </li>
+              <li>
+                <p>
+                  Enter a referral code <i>(optional)</i>
+                </p>
+                <TextField
+                  id="outlined-basic"
+                  label="Referral Code"
+                  variant="outlined"
+                  dense="true"
+                  fullWidth
+                  onChange={(event) => this.setter(event, "referrer")}
                 />
               </li>
               <li>
