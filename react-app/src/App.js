@@ -25,7 +25,7 @@ function App() {
             )}
           />
           <Route path={"/stats"} render={() => <Stats />} />
-          <Route path={"/referral"} render={() => <Referral />}/>
+          <Route path={"/invite-a-friend"} render={() => <Referral />}/>
         </Switch>
       </BrowserRouter>
     </div>

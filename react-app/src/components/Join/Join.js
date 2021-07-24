@@ -112,11 +112,11 @@ class Join extends React.Component {
               </li>
               <li>
                 <p>
-                  Enter a referral code <i>(optional)</i>
+                  Enter an invite code* <i>(optional)</i>
                 </p>
                 <TextField
                   id="outlined-basic"
-                  label="Referral Code"
+                  label="Invite Code"
                   variant="outlined"
                   dense="true"
                   fullWidth
@@ -188,6 +188,9 @@ class Join extends React.Component {
                 contact@safeblues.org
               </a>
               .
+            </p>
+            <p>
+              * If a friend is already participating in the Safe Blues experiment, use their <a href="https://safeblues.org/invite-a-friend">invite code</a> to increase your chances of winning.
             </p>
           </form>
         ) : (

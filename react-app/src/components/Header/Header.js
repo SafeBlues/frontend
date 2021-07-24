@@ -29,8 +29,8 @@ export default function Header(props) {
       <Button color="inherit" href="/join">
         Join
       </Button>
-      <Button color="inheirt" href="/referral">
-        Refer a Friend
+      <Button color="inheirt" href="/invite-a-friend">
+        Invite a Friend
       </Button>
     </div>
   );

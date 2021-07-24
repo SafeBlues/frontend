@@ -35,7 +35,7 @@ class Referral extends React.Component {
                  this.setState({response: "Unrecognised participant ID"});
               } else {
                   this.setState({referral_code: data.referral_code});
-                  this.setState({response: `Your referral code is ${this.state.referral_code}`});
+                  this.setState({response: `Your invite code is ${this.state.referral_code}`});
               }
           })
           .catch((error) => {
@@ -46,14 +46,15 @@ class Referral extends React.Component {
     render() {
         return (
             <div className={"referralContainer"}>
-              <Header title="Refer a Friend"/>
+              <Header title="Invite a Friend"/>
+              <h2>How does it work?</h2>
                 <p>
-                    You can refer a friend to participate in the Safe Blues campus experiment by
-                    having them use your referral code when registering. This will give both you
-                    and your friend additional campus hours, increasing your chances of winning
-                    prizes.
+                    If you are already participating in the Safe Blues experiment, you can get more eligible hours for the prize draws by inviting friends to participate. The full details of how inviting friends helps increase your chances are <a href="https://safeblues.org/prizes">here</a>. In a nutshell, the more people that you invite (as long as they occasionally attend campus), the higher your chances of winning!
+                    <br></br>
+                    The invite a friend mechanism works by asking your friends to join, giving them your personal <b>invite code</b>, and having them register using your code when <a href="https://safeblues.org/join">joining</a>.
+                    Your friends are rewarded too, with bonus eligible hours and a higher chance of winning.
                 </p>
-                <h2>Get your referral code:</h2>
+                <h2>Get your invite code:</h2>
                 <TextField
                   id="outlined-basic"
                   label="Participant ID"
