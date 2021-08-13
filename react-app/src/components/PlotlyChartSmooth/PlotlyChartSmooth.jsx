@@ -48,10 +48,11 @@ function PlotlyChart(props) {
         xaxis: {
           title: { text: "Hours on campus" },
           showgrid: false,
-          tickmode: "auto",
-          nticks: 10,
+          tickmode: "linear",
+          tick0: 0,
+          dtick: 20
         },
-        yaxis: { tickvals: [] },
+        yaxis: { showticklabels: false },
       }}
       config={{
         staticPlot: true,
