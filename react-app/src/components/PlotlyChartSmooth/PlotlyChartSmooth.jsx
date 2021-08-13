@@ -4,12 +4,10 @@ import Plot from "react-plotly.js";
 
 function PlotlyChart(props) {
   var line = {};
-  const bin_width = props.bin_edges[1] - props.bin_edges[0];
-  const shifted_edges = props.bin_edges.map((x) => x + bin_width / 2);
   if (props.participant_hours_on_campus !== undefined) {
     line = {
       x: [props.participant_hours_on_campus, props.participant_hours_on_campus],
-      y: [0, 1],
+      y: [0, Math.max(...props.y_smooth)],
       type: "line",
       mode: "lines",
       // marker: { color: "red" },
