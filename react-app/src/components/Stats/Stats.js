@@ -17,8 +17,8 @@ class Stats extends React.Component {
       bin_edges: [],
       x_smooth: [],
       y_smooth: [],
-      participant_hours_on_campus: 0,
-      participant_hours_eligible: 0,
+      campus_hours: 0,
+      eligible_hours: 0,
       num_participants: "",
       is_hist: true, //false implies a continuous graph
     };
@@ -65,8 +65,8 @@ class Stats extends React.Component {
           location.replace("/join/" + this.state.participant_id); //eslint-disable-line no-restricted-globals
         } else {
           this.setState({
-            participant_hours_on_campus: data.total_hours_on_campus,
-            participant_hours_eligible: data.eligible_hours,
+            campus_hours: data.total_hours_on_campus,
+            eligible_hours: data.eligible_hours,
           });
         }
       })
@@ -91,7 +91,7 @@ class Stats extends React.Component {
     };
     if (this.state.participant_id) {
       graphArgs["participant_hours_on_campus"] =
-        this.state.participant_hours_eligible;
+        this.state.eligible_hours;
     }
     return (
       <div>
@@ -111,18 +111,11 @@ class Stats extends React.Component {
           {this.state.participant_id && (
             <>
               <p>
-                Your hours on campus:{" "}
-                <b>{this.state.participant_hours_on_campus}</b>
-                {this.state.participant_hours_on_campus !==
-                  this.state.participant_hours_eligible && (
-                  <>
-                    {" "}
-                    (only <b>{this.state.participant_hours_eligible}</b> hours
-                    are eligible for the{" "}
-                    <a href="https://safeblues.org/prizes">prize draw</a>)
-                  </>
-                )}
-                .
+                Campus Hours:{" "}
+                <b>{this.state.campus_hours}</b>
+                {" "}|{" "}
+                Eligible Hours:{" "}
+                <b>{this.state.eligible_hours}</b>
               </p>
             </>
           )}

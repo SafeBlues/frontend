@@ -11,7 +11,7 @@ function PlotlyChart(props) {
       type: "line",
       mode: "lines",
       // marker: { color: "red" },
-      name: "Your hours on campus",
+      name: "Your Elliglbe Hours",
       line: { dash: "dash", color: "red" },
     };
   } else {
@@ -29,7 +29,7 @@ function PlotlyChart(props) {
             color: "rgb(0,119,179)",
             opacity: 0.0,
           },
-          name: "Aggregate hours on campus",
+          name: "Aggregrate Eligible Hours",
           fill: "tozeroy",
         },
       ]}
@@ -46,11 +46,11 @@ function PlotlyChart(props) {
           bargap: 0,
         },
         xaxis: {
-          title: { text: "Hours on campus" },
+          title: { text: "Eligible Hours" },
           showgrid: false,
           tickmode: "linear",
           tick0: 0,
-          dtick: 20
+          dtick: 50
         },
         yaxis: { showticklabels: false },
       }}

@@ -13,7 +13,7 @@ function PlotlyChart(props) {
       type: "line",
       mode: "lines",
       // marker: { color: "red" },
-      name: "Your hours on campus",
+      name: "Your Eligible Hours",
       line: { dash: "dash", color: "red" },
     };
   } else {
@@ -30,7 +30,7 @@ function PlotlyChart(props) {
           marker: {
             color: "rgb(0,119,179)",
           },
-          name: "Aggregate hours on campus",
+          name: "Aggregate Eligible Hours",
         },
       ]}
       layout={{
@@ -45,8 +45,8 @@ function PlotlyChart(props) {
           x: 1,
           bargap: 0,
         },
-        xaxis: { title: { text: "Hours on campus" } },
-        yaxis: { title: { text: "Number of participants" } },
+        xaxis: { title: { text: "Eligible Hours" } },
+        yaxis: { title: { text: "Number of Participants" } },
       }}
       config={{
         staticPlot: true,
