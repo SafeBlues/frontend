@@ -99,8 +99,8 @@ class Stats extends React.Component {
           <Header title="Campus Hours Leaderboard" />
           <p>
             <b>
-              Phase 2 has now started, and these are your hours collected during
-              Phase 2 only.
+              Phase 2 is now finished. More information about the continuation of the
+              experiment will soon be provided.
             </b>
           </p>
           <p>
