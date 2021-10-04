@@ -57,15 +57,15 @@ class Join extends React.Component {
   render() {
     return (
       <div className={"joinContainer"}>
-        <Header title="Joining The Safe Blues 2021 Experiment" />
+        <Header title="Joining The Safe Blues Experiment at UoA" />
         {!this.state.success ? (
           <form className="formContainer">
             <p>
               Thank you for your interest in joining the Safe Blues campus
               experiment. If you are over 16, plan to attend the University of
-              Auckland city campus during parts of 2021, and have an Android
-              mobile device you are welcomed to join. You are advised to first
-              read the online{" "}
+              Auckland city campus during parts of 2021 or 2022, and have an
+              Android mobile device you are welcomed to join. You are advised to
+              first read the online{" "}
               <a href={STATIC_URL + "/participant-information-sheet/"}>
                 participant information sheet
               </a>
@@ -98,7 +98,7 @@ class Join extends React.Component {
                   Enter your Participant ID to link it to your email address.
                 </p>
                 {/* TODO add validation to the user input, eg add 'error' to the
-               TextField class when the input is invalid, or come back from the 
+               TextField class when the input is invalid, or come back from the
               backend as invalid. */}
                 <TextField
                   id="outlined-basic"
