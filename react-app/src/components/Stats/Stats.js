@@ -99,8 +99,7 @@ class Stats extends React.Component {
           <Header title="Campus Hours Leaderboard" />
           <p>
             <b>
-              Phase 2 is now finished. More information about the continuation of the
-              experiment will soon be provided.
+              Phase 4 of the Safe Blues Experiment will commence in June, 2022
             </b>
           </p>
           <p>
