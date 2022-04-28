@@ -99,12 +99,15 @@ class Stats extends React.Component {
           <Header title="Campus Hours Leaderboard" />
           <p>
             <b>
-              Phase 4 of the Safe Blues Experiment will commence in June, 2022
+              Phase 4 of the Safe Blues Experiment will commence on June 10th, 2022
             </b>
           </p>
           <p>
             We currently have <strong>{this.state.num_participants}</strong>{" "}
             participants.
+          </p>
+          <p>
+              Participant Statistics from a Previous Phase:
           </p>
           {/* TODO make this conditional on having submitted a participant_id */}
           {this.state.participant_id && (
